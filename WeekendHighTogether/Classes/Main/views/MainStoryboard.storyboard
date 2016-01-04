@@ -14,12 +14,25 @@
                         <viewControllerLayoutGuide type="bottom" id="g7H-UF-1JT"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="6Rq-VO-Qr1">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="UWY-ZG-uv0">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="tMz-px-Ups" id="pO8-E5-yFY"/>
+                                    <outlet property="delegate" destination="tMz-px-Ups" id="xS1-ce-p5S"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="0.64527849132190851" blue="0.64132878662849979" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <navigationItem key="navigationItem" title="欢乐周末" id="nwO-9u-cr8"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="tableView" destination="UWY-ZG-uv0" id="8s4-Bb-gJM"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SM8-ne-UtP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -31,7 +44,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="RcN-Gs-zri" sceneMemberID="viewController">
                     <toolbarItems/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="BtH-Vh-Dw1">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="BtH-Vh-Dw1">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
