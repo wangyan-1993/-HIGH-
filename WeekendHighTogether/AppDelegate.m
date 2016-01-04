@@ -21,17 +21,39 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     
-    MainViewController *main = [[MainViewController alloc]init];
-    UINavigationController *mainNav = [[UINavigationController alloc]initWithRootViewController:main];
     
-    DiscoverViewController *discover = [[DiscoverViewController alloc]init];
-    UINavigationController *discoverNav = [[UINavigationController alloc]initWithRootViewController:discover];
+    //UITabBarController
+    UITabBarController *tabBarVC = [[UITabBarController alloc]init];
+    //创建被tabBarVC管理的试图控制器
+    //主页
+    UIStoryboard *mainStoryBoard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
+    UINavigationController *mainNav = mainStoryBoard.instantiateInitialViewController;
+    mainNav.tabBarItem.image = [UIImage imageNamed:@"ft_home_normal_ic.png"];
+    //按照上左下右的顺序去设置
+    mainNav.tabBarItem.imageInsets = UIEdgeInsetsMake(6, 0, -6, 0);
+    UIImage *selectImage1 = [UIImage imageNamed:@"ft_home_selected_ic.png"];
+    mainNav.tabBarItem.selectedImage = [selectImage1 imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     
-    MineViewController *mine = [[MineViewController alloc]init];
-    UINavigationController *mineNav = [[UINavigationController alloc]initWithRootViewController:mine];
     
     
+    UIStoryboard *discoverStoryBoard = [UIStoryboard storyboardWithName:@"DiscoverStoryboard" bundle:nil];
+    UINavigationController *discoverNav = discoverStoryBoard.instantiateInitialViewController;
+    discoverNav.tabBarItem.image = [UIImage imageNamed:@"ft_found_normal_ic.png"];
+    discoverNav.tabBarItem.imageInsets = UIEdgeInsetsMake(6, 0, -6, 0);
+    UIImage *selectImage2 = [UIImage imageNamed:@"ft_found_selected_ic.png"];
+    discoverNav.tabBarItem.selectedImage = [selectImage2 imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     
+    UIStoryboard *mineStoryBoard = [UIStoryboard storyboardWithName:@"MineStoryboard" bundle:nil];
+    UINavigationController *mineNav = mineStoryBoard.instantiateInitialViewController;
+    mineNav.tabBarItem.image = [UIImage imageNamed:@"ft_person_normal_ic.png"];
+    mineNav.tabBarItem.imageInsets = UIEdgeInsetsMake(6, 0, -6, 0);
+    UIImage *selectImage3 = [UIImage imageNamed:@"ft_person_selected_ic.png"];
+    mineNav.tabBarItem.selectedImage = [selectImage3 imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    
+    //添加被管理的试图控制器
+    tabBarVC.viewControllers = @[mainNav, discoverNav, mineNav];
+    tabBarVC.tabBar.barTintColor = [UIColor whiteColor];
+    self.window.rootViewController = tabBarVC;
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     return YES;
