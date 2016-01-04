@@ -7,7 +7,9 @@
 //
 
 #import "AppDelegate.h"
-
+#import "MainViewController.h"
+#import "DiscoverViewController.h"
+#import "MineViewController.h"
 @interface AppDelegate ()
 
 @end
@@ -18,6 +20,18 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
+    
+    MainViewController *main = [[MainViewController alloc]init];
+    UINavigationController *mainNav = [[UINavigationController alloc]initWithRootViewController:main];
+    
+    DiscoverViewController *discover = [[DiscoverViewController alloc]init];
+    UINavigationController *discoverNav = [[UINavigationController alloc]initWithRootViewController:discover];
+    
+    MineViewController *mine = [[MineViewController alloc]init];
+    UINavigationController *mineNav = [[UINavigationController alloc]initWithRootViewController:mine];
+    
+    
+    
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     return YES;
