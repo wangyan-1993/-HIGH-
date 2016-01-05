@@ -47,6 +47,10 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="BtH-Vh-Dw1">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.058397881686687469" green="0.86719977855682373" blue="0.85908955335617065" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" red="0.99626988172531128" green="0.99252361059188843" blue="0.99599593877792358" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>

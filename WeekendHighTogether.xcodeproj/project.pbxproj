@@ -19,6 +19,8 @@
 		7A8B03EB1C3A50A200FFCBA0 /* MineStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A8B03EA1C3A50A200FFCBA0 /* MineStoryboard.storyboard */; };
 		7A8B03EF1C3A766D00FFCBA0 /* MainTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A8B03ED1C3A766D00FFCBA0 /* MainTableViewCell.m */; };
 		7A8B03F01C3A766D00FFCBA0 /* MainTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A8B03EE1C3A766D00FFCBA0 /* MainTableViewCell.xib */; };
+		7A9708C81C3BA06500C1C566 /* MainModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A9708C71C3BA06500C1C566 /* MainModel.m */; };
+		7A9708CC1C3BA0DF00C1C566 /* File in Resources */ = {isa = PBXBuildFile; fileRef = 7A9708CB1C3BA0DF00C1C566 /* File */; };
 		D1682E872E7C53838E04F830 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 730F5D6BD68882D6C40E7079 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -45,6 +47,9 @@
 		7A8B03EC1C3A766D00FFCBA0 /* MainTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainTableViewCell.h; sourceTree = "<group>"; };
 		7A8B03ED1C3A766D00FFCBA0 /* MainTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainTableViewCell.m; sourceTree = "<group>"; };
 		7A8B03EE1C3A766D00FFCBA0 /* MainTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainTableViewCell.xib; sourceTree = "<group>"; };
+		7A9708C61C3BA06500C1C566 /* MainModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainModel.h; sourceTree = "<group>"; };
+		7A9708C71C3BA06500C1C566 /* MainModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainModel.m; sourceTree = "<group>"; };
+		7A9708CB1C3BA0DF00C1C566 /* File */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = File; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -167,6 +172,9 @@
 		7A8B03D91C3A4E3300FFCBA0 /* models */ = {
 			isa = PBXGroup;
 			children = (
+				7A9708C61C3BA06500C1C566 /* MainModel.h */,
+				7A9708C71C3BA06500C1C566 /* MainModel.m */,
+				7A9708CB1C3BA0DF00C1C566 /* File */,
 			);
 			path = models;
 			sourceTree = "<group>";
@@ -310,6 +318,7 @@
 				7A8B03F01C3A766D00FFCBA0 /* MainTableViewCell.xib in Resources */,
 				7A8B03E91C3A507A00FFCBA0 /* DiscoverStoryboard.storyboard in Resources */,
 				7A8B03E71C3A505C00FFCBA0 /* MainStoryboard.storyboard in Resources */,
+				7A9708CC1C3BA0DF00C1C566 /* File in Resources */,
 				7A8B03B81C3A1C3A00FFCBA0 /* Assets.xcassets in Resources */,
 				7A8B03BB1C3A1C3A00FFCBA0 /* LaunchScreen.storyboard in Resources */,
 				7A8B03EB1C3A50A200FFCBA0 /* MineStoryboard.storyboard in Resources */,
@@ -377,6 +386,7 @@
 				7A8B03E41C3A4E3300FFCBA0 /* MineViewController.m in Sources */,
 				7A8B03B31C3A1C3A00FFCBA0 /* main.m in Sources */,
 				7A8B03E31C3A4E3300FFCBA0 /* MainViewController.m in Sources */,
+				7A9708C81C3BA06500C1C566 /* MainModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
