@@ -10,6 +10,7 @@
 #import "MainTableViewCell.h"
 #import <AFNetworking/AFHTTPSessionManager.h>
 #import "MainModel.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 @interface MainViewController ()<UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 //全部列表数据
@@ -19,6 +20,7 @@
 //推荐专题数据
 @property (nonatomic, strong) NSMutableArray *themeArray;
 
+@property(nonatomic, strong) NSMutableArray *adArray;
 @end
 
 @implementation MainViewController
@@ -93,9 +95,60 @@
 //自定义tableView头部
 - (void)configTableViewHeaderView{
     UIView *headerView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 343)];
-    headerView.backgroundColor = [UIColor redColor];
+    //添加轮播图
+    UIScrollView *scrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 186)];
+    scrollView.contentSize = CGSizeMake(self.adArray.count * [UIScreen mainScreen].bounds.size.width, 186);
+    for (int i = 0; i < self.adArray.count; i ++) {
+        UIImageView *imageview = [[UIImageView alloc]initWithFrame:CGRectMake([UIScreen mainScreen].bounds.size.width * i, 0, [UIScreen mainScreen].bounds.size.width, 186)];
+        [imageview sd_setImageWithURL:self.adArray[i] placeholderImage:nil];
+        [scrollView addSubview:imageview];
+        
+    }
+    [headerView addSubview:scrollView];
+    
+    //button
+    for (int i = 0; i < 4; i ++) {
+        UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+        btn.frame = CGRectMake(i * [UIScreen mainScreen].bounds.size.width / 4, 186, [UIScreen mainScreen].bounds.size.width / 4, [UIScreen mainScreen].bounds.size.width / 4);
+        [btn setImage:[UIImage imageNamed:[NSString stringWithFormat:@"%d", i + 1]] forState:UIControlStateNormal];
+        btn.tag = 100 + i;
+        [btn addTarget:self action:@selector(activityButtonAction:) forControlEvents:UIControlEventTouchUpInside];
+        [headerView addSubview:btn];
+    }
+    
+    //竞选活动&热门专题
+   
+        UIButton *btn1 = [UIButton buttonWithType:UIButtonTypeCustom];
+        btn1.frame = CGRectMake(0, 186 + [UIScreen mainScreen].bounds.size.width / 4, [UIScreen mainScreen].bounds.size.width / 2, 343 - 186 - [UIScreen mainScreen].bounds.size.width / 4);
+        [btn1 setImage:[UIImage imageNamed:@"home_huodong"]forState:UIControlStateNormal];
+        [btn1 addTarget:self action:@selector(goodActivityButtonAction:) forControlEvents:UIControlEventTouchUpInside];
+        [headerView addSubview:btn1];
+    UIButton *btn2 = [UIButton buttonWithType:UIButtonTypeCustom];
+    btn2.frame = CGRectMake([UIScreen mainScreen].bounds.size.width / 2, 186 + [UIScreen mainScreen].bounds.size.width / 4, [UIScreen mainScreen].bounds.size.width / 2, 343 - 186 - [UIScreen mainScreen].bounds.size.width / 4);
+    [btn2 setImage:[UIImage imageNamed:@"home_zhuanti"]forState:UIControlStateNormal];
+    [btn2 addTarget:self action:@selector(hotActivityButtonAction:) forControlEvents:UIControlEventTouchUpInside];
+    [headerView addSubview:btn2];
+    
+    
+    
     self.tableView.tableHeaderView = headerView;
- }
+  
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    UIView *view = [[UIView alloc]init];
+  UIImageView *sectionView = [[UIImageView alloc] initWithFrame:CGRectMake([UIScreen mainScreen].bounds.size.width / 2 - 160, 5, 320, 16)];
+    if (section == 0) {
+       sectionView.image = [UIImage imageNamed:@"home_recommed_ac"];
+    } else {
+       sectionView.image = [UIImage imageNamed:@"home_recommd_rc"];
+    }
+   [view addSubview:sectionView];
+    return view;
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    return 26;
+}
 #pragma mark---button method
 - (void)selectCityAction:(UIBarButtonItem *)barBtn{
     
@@ -103,6 +156,17 @@
 - (void)searchActivityAction:(UIBarButtonItem *)barBtn{
     
 }
+- (void)activityButtonAction:(UIButton *)btn{
+    
+}
+- (void)goodActivityButtonAction:(UIButton *)btn{
+    
+}
+- (void)hotActivityButtonAction:(UIButton *)btn{
+    
+}
+
+
 #pragma mark---网络请求
 - (void)requestModel{
 
@@ -139,6 +203,13 @@
             
             [self.listArray addObject:self.activityArray];
             [self.listArray addObject:self.themeArray];
+            
+            //广告
+            for (NSDictionary *dict in adDataArray) {
+                [self.adArray addObject:dict[@"url"]];
+            }
+            //取到数据之后重新刷新headerView
+            [self configTableViewHeaderView];
             [self.tableView reloadData];
             
         }else{
@@ -176,6 +247,14 @@
     }
     return _themeArray;
 }
+- (NSMutableArray *)adArray{
+    if (_adArray == nil) {
+        self.adArray = [NSMutableArray new];
+    }
+    return _adArray;
+}
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
