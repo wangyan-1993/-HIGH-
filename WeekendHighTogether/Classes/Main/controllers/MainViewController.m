@@ -28,8 +28,15 @@
 @property (nonatomic, strong) NSMutableArray *themeArray;
 //广告
 @property(nonatomic, strong) NSMutableArray *adArray;
+//轮播图
 @property(nonatomic, strong) UIScrollView *scrollView;
+//小圆点
 @property(nonatomic, strong) UIPageControl *pageControl;
+//定时器用于图片滚动播放
+@property(nonatomic, strong) NSTimer *timer;
+//精选活动&热门专题
+@property(nonatomic, strong) UIButton *button1;
+@property(nonatomic, strong) UIButton *button2;
 @end
 
 @implementation MainViewController
@@ -60,7 +67,8 @@
     [self configTableViewHeaderView];
     //请求网络数据
     [self requestModel];
-    
+    //启动定时器
+    [self addTime];
 }
 
 #pragma mark---UITableViewDataSource
@@ -104,28 +112,23 @@
 //自定义tableView头部
 - (void)configTableViewHeaderView{
     UIView *headerView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, kWidth, 343)];
-    //添加轮播图
-    self.scrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, kWidth, 186)];
-    self.scrollView.contentSize = CGSizeMake(self.adArray.count * kWidth, 186);
-    //整屏滑动
-    self.scrollView.pagingEnabled = YES;
-    //不显示水平方向的滚动条
-    self.scrollView.showsHorizontalScrollIndicator = NO;
-    self.scrollView.delegate = self;
-    //创建小圆点
-    self.pageControl = [[UIPageControl alloc]initWithFrame:CGRectMake(0, 186 - 30, kWidth, 30)];
     self.pageControl.numberOfPages = self.adArray.count;
-    self.pageControl.currentPageIndicatorTintColor = [UIColor cyanColor];
-    [self.pageControl addTarget:self action:@selector(pageSelectAction) forControlEvents:UIControlEventValueChanged];
-    
     for (int i = 0; i < self.adArray.count; i ++) {
         UIImageView *imageview = [[UIImageView alloc]initWithFrame:CGRectMake(kWidth * i, 0, kWidth, 186)];
-        [imageview sd_setImageWithURL:self.adArray[i] placeholderImage:nil];
+        [imageview sd_setImageWithURL:self.adArray[i][@"url"] placeholderImage:nil];
+        imageview.userInteractionEnabled = YES;
+        UIButton *touchButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        touchButton.frame = self.scrollView.frame;
+        touchButton.tag = 200 + i;
+        [touchButton addTarget:self action:@selector(touchAD:) forControlEvents:UIControlEventTouchUpInside];
+        [imageview addSubview:touchButton];
         [self.scrollView addSubview:imageview];
-        
     }
     [headerView addSubview:self.scrollView];
     [headerView addSubview:self.pageControl];
+    
+    
+    
     
     
     //button
@@ -139,20 +142,8 @@
     }
     
     //精选活动&热门专题
-   
-        UIButton *btn1 = [UIButton buttonWithType:UIButtonTypeCustom];
-        btn1.frame = CGRectMake(0, 186 + kWidth / 4, kWidth / 2, 343 - 186 - kWidth / 4);
-        [btn1 setImage:[UIImage imageNamed:@"home_huodong"]forState:UIControlStateNormal];
-        [btn1 addTarget:self action:@selector(goodActivityButtonAction:) forControlEvents:UIControlEventTouchUpInside];
-        [headerView addSubview:btn1];
-        UIButton *btn2 = [UIButton buttonWithType:UIButtonTypeCustom];
-        btn2.frame = CGRectMake(kWidth / 2, 186 + kWidth / 4, kWidth / 2, 343 - 186 - kWidth / 4);
-        [btn2 setImage:[UIImage imageNamed:@"home_zhuanti"]forState:UIControlStateNormal];
-        [btn2 addTarget:self action:@selector(hotActivityButtonAction:) forControlEvents:UIControlEventTouchUpInside];
-        [headerView addSubview:btn2];
-    
-    
-    
+    [headerView addSubview:self.button1];
+    [headerView addSubview:self.button2];
     self.tableView.tableHeaderView = headerView;
   
 }
@@ -207,7 +198,22 @@
     [self.navigationController pushViewController:hotVC animated:YES];
 }
 
-
+- (void)touchAD:(UIButton *)btn{
+    //
+    NSString *type = self.adArray[btn.tag - 200][@"type"];
+    if ([type integerValue] == 1) {
+        ActivityViewController *activityVC = [[ActivityViewController alloc]init];
+        activityVC.activityId = self.adArray[btn.tag - 200][@"id"];
+        [self.navigationController pushViewController:activityVC animated:YES];
+    }else{
+        HotActivityViewController *hot = [[HotActivityViewController alloc]init];
+        [self.navigationController pushViewController:hot animated:YES];
+    }
+    
+    
+    
+    
+}
 #pragma mark---网络请求
 - (void)requestModel{
 
@@ -246,7 +252,8 @@
             
             //广告
             for (NSDictionary *dict in adDataArray) {
-                [self.adArray addObject:dict[@"url"]];
+                NSDictionary *dic = @{@"url":dict[@"url"], @"id":dict[@"id"], @"type":dict[@"type"]};
+                [self.adArray addObject:dic];
             }
             //取到数据之后重新刷新headerView
             [self configTableViewHeaderView];
@@ -266,7 +273,7 @@
 //    NSString *URLString = @"http://e.kumi.cn/app/v1.3/index.php?";
 //    NSDictionary *parameters = @{@"s": @"02a411494fa910f5177d82a6b0a63788", @"t": @"1451307342", @"channelid":@"appstore", @"cityid":@"1", @"lat":@"34.62172291944134", @"limit":@"30", @"lng":@"112.4149512442411", @"page":@"1"};
 }
-#pragma mark---数组懒加载
+#pragma mark---懒加载
 - (NSMutableArray *)listArray{
     if (_listArray == nil) {
         self.listArray = [NSMutableArray new];
@@ -293,6 +300,57 @@
     }
     return _adArray;
 }
+//添加轮播图
+
+- (UIScrollView *)scrollView{
+    if (_scrollView == nil) {
+        self.scrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, kWidth, 186)];
+        self.scrollView.contentSize = CGSizeMake(self.adArray.count * kWidth, 186);
+        //整屏滑动
+        self.scrollView.pagingEnabled = YES;
+        //不显示水平方向的滚动条
+        self.scrollView.showsHorizontalScrollIndicator = NO;
+        self.scrollView.delegate = self;
+        
+        
+    }
+    return _scrollView;
+}
+//小圆点
+- (UIPageControl *)pageControl{
+    if (_pageControl == nil) {
+        //创建小圆点
+        self.pageControl = [[UIPageControl alloc]initWithFrame:CGRectMake(0, 186 - 30, kWidth, 30)];
+        self.pageControl.numberOfPages = self.adArray.count;
+        self.pageControl.currentPageIndicatorTintColor = [UIColor cyanColor];
+        [self.pageControl addTarget:self action:@selector(pageSelectAction) forControlEvents:UIControlEventValueChanged];
+     }
+    return _pageControl;
+}
+//精选活动
+- (UIButton *)button1{
+    if (_button1 == nil) {
+        self.button1 = [UIButton buttonWithType:UIButtonTypeCustom];
+        self.button1.frame = CGRectMake(0, 186 + kWidth / 4, kWidth / 2, 343 - 186 - kWidth / 4);
+        [self.button1 setImage:[UIImage imageNamed:@"home_huodong"]forState:UIControlStateNormal];
+        [self.button1 addTarget:self action:@selector(goodActivityButtonAction:) forControlEvents:UIControlEventTouchUpInside];
+
+    }
+    return _button1;
+}
+//热门专题
+- (UIButton *)button2{
+    if (_button2 == nil) {
+        self.button2 = [UIButton buttonWithType:UIButtonTypeCustom];
+        self.button2.frame = CGRectMake(kWidth / 2, 186 + kWidth / 4, kWidth / 2, 343 - 186 - kWidth / 4);
+        [self.button2 setImage:[UIImage imageNamed:@"home_zhuanti"]forState:UIControlStateNormal];
+        [self.button2 addTarget:self action:@selector(hotActivityButtonAction:) forControlEvents:UIControlEventTouchUpInside];
+
+    }
+    return _button2;
+}
+
+
 #pragma mark-----首页轮播图
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
     //第一步：获取scrollView页面的宽度
@@ -309,6 +367,31 @@
     NSInteger pageNum = self.pageControl.currentPage;
     CGFloat pageWidth = self.scrollView.frame.size.width;
     self.scrollView.contentOffset = CGPointMake(pageNum * pageWidth, 0);
+}
+#pragma mark ------轮播图
+- (void)addTime{
+    //防止定时器重复创建
+    if (self.timer != nil) {
+        return;
+    }
+    self.timer = [NSTimer timerWithTimeInterval:2.0 target:self selector:@selector(move) userInfo:nil repeats:YES];
+    [[NSRunLoop currentRunLoop]addTimer:self.timer forMode:NSRunLoopCommonModes];
+}
+//每两秒执行一次，图片自动轮播
+- (void)move{
+    NSInteger rollPage = (self.pageControl.currentPage + 1) % self.adArray.count;
+    self.pageControl.currentPage = rollPage;
+    //计算scrollView的偏移量
+    [self.scrollView setContentOffset:CGPointMake(self.pageControl.currentPage * kWidth, 0)];
+}
+//当手动去滑动scrollView的时候，定时器依然在计算时间，可能我们刚刚滑动到下一页，定时器时间刚好触发，导致在当前页停留的时间不到2秒
+//解决方案：添加下面两个方法
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
+    [self.timer invalidate];
+    self.timer = nil;//停止定时器后并置为nil
+}
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
+    [self addTime];
 }
 
 - (void)didReceiveMemoryWarning {

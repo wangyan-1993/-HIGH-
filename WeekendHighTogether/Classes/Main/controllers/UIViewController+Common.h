@@ -1,5 +1,5 @@
 //
-//  ActivityViewController.h
+//  UIViewController+Common.h
 //  WeekendHighTogether
 //
 //  Created by SCJY on 16/1/6.
@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ActivityViewController : UIViewController
-@property(nonatomic, copy) NSString *activityId;
+@interface UIViewController (Common)
+//导航栏添加返回按钮
+- (void)showBackBtn;
 @end

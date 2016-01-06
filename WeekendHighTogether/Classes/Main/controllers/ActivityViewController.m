@@ -7,7 +7,9 @@
 //
 
 #import "ActivityViewController.h"
-
+#import <AFNetworking/AFHTTPSessionManager.h>
+#import "MBProgressHUD.h"
+#import "UIViewController+Common.h"
 @interface ActivityViewController ()
 
 @end
@@ -17,7 +19,32 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.title = @"活动详情";
+    [self showBackBtn];
+    
+    
+    //[self getModel];
 }
+#pragma mark------custom method
+
+- (void)getModel{
+    
+    AFHTTPSessionManager *sessionMananger = [AFHTTPSessionManager manager];
+    sessionMananger.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    
+    [sessionMananger GET:[NSString stringWithFormat:@"%@&id=%@", kActivityDetail, self.activityId] parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
+         [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+        NSLog(@"%@", downloadProgress);
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+        NSLog(@"%@", responseObject);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+         [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+        NSLog(@"%@", error);
+    }];
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
