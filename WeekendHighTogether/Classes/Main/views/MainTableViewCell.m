@@ -30,6 +30,13 @@
     [self.activityImageView sd_setImageWithURL:[NSURL URLWithString:model.image_big] placeholderImage:nil];
     self.activityNameLable.text = model.title;
     self.activityPrice.text = model.price;
+    
+    if ([model.type integerValue] != RecommedTypeActivity) {
+        self.activityDistance.hidden = YES;
+    } else{
+        self.activityDistance.hidden = NO;
+    }
+    
 }
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];

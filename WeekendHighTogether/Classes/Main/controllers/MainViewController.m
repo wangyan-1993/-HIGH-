@@ -11,6 +11,13 @@
 #import <AFNetworking/AFHTTPSessionManager.h>
 #import "MainModel.h"
 #import <SDWebImage/UIImageView+WebCache.h>
+#import "SelectCityViewController.h"
+#import "SearchViewController.h"
+#import "ActivityViewController.h"
+#import "ThemeViewController.h"
+#import "ClassifyViewController.h"
+#import "GoodActivityViewController.h"
+#import "HotActivityViewController.h"
 @interface MainViewController ()<UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 //全部列表数据
@@ -64,11 +71,11 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     MainTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
     cell.model = self.listArray[indexPath.section][indexPath.row];
-    return cell;
+       return cell;
 }
 
 
-#pragma mark---UITableViewDataSource
+#pragma mark---UITableViewDelegate
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return 203;
@@ -84,7 +91,7 @@
 //}
 //自定义分区头部
 //- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
-//UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 343)];
+//UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, kWidth, 343)];
 //view.backgroundColor = [UIColor redColor];
 //self.tableView.tableHeaderView = view;
 
@@ -96,7 +103,7 @@
 - (void)configTableViewHeaderView{
     UIView *headerView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, kWidth, 343)];
     //添加轮播图
-    UIScrollView *scrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 186)];
+    UIScrollView *scrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, kWidth, 186)];
     scrollView.contentSize = CGSizeMake(self.adArray.count * kWidth, 186);
     for (int i = 0; i < self.adArray.count; i ++) {
         UIImageView *imageview = [[UIImageView alloc]initWithFrame:CGRectMake(kWidth * i, 0, kWidth, 186)];
@@ -116,18 +123,18 @@
         [headerView addSubview:btn];
     }
     
-    //竞选活动&热门专题
+    //精选活动&热门专题
    
         UIButton *btn1 = [UIButton buttonWithType:UIButtonTypeCustom];
         btn1.frame = CGRectMake(0, 186 + kWidth / 4, kWidth / 2, 343 - 186 - kWidth / 4);
         [btn1 setImage:[UIImage imageNamed:@"home_huodong"]forState:UIControlStateNormal];
         [btn1 addTarget:self action:@selector(goodActivityButtonAction:) forControlEvents:UIControlEventTouchUpInside];
         [headerView addSubview:btn1];
-    UIButton *btn2 = [UIButton buttonWithType:UIButtonTypeCustom];
-    btn2.frame = CGRectMake(kWidth / 2, 186 + kWidth / 4, kWidth / 2, 343 - 186 - kWidth / 4);
-    [btn2 setImage:[UIImage imageNamed:@"home_zhuanti"]forState:UIControlStateNormal];
-    [btn2 addTarget:self action:@selector(hotActivityButtonAction:) forControlEvents:UIControlEventTouchUpInside];
-    [headerView addSubview:btn2];
+        UIButton *btn2 = [UIButton buttonWithType:UIButtonTypeCustom];
+        btn2.frame = CGRectMake(kWidth / 2, 186 + kWidth / 4, kWidth / 2, 343 - 186 - kWidth / 4);
+        [btn2 setImage:[UIImage imageNamed:@"home_zhuanti"]forState:UIControlStateNormal];
+        [btn2 addTarget:self action:@selector(hotActivityButtonAction:) forControlEvents:UIControlEventTouchUpInside];
+        [headerView addSubview:btn2];
     
     
     
@@ -137,7 +144,7 @@
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     UIView *view = [[UIView alloc]init];
-  UIImageView *sectionView = [[UIImageView alloc] initWithFrame:CGRectMake([UIScreen mainScreen].bounds.size.width / 2 - 160, 5, 320, 16)];
+  UIImageView *sectionView = [[UIImageView alloc] initWithFrame:CGRectMake(kWidth / 2 - 160, 5, 320, 16)];
     if (section == 0) {
        sectionView.image = [UIImage imageNamed:@"home_recommed_ac"];
     } else {
@@ -149,21 +156,40 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     return 26;
 }
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (indexPath.section == 0) {
+        ActivityViewController *activityVC = [[ActivityViewController alloc]init];
+        [self.navigationController pushViewController:activityVC animated:YES];
+    }else{
+        ThemeViewController *themeVC = [[ThemeViewController alloc]init];
+        [self.navigationController pushViewController:themeVC animated:YES];
+    }
+}
+
 #pragma mark---button method
 - (void)selectCityAction:(UIBarButtonItem *)barBtn{
-    
+    SelectCityViewController *selectCityVC = [[SelectCityViewController alloc]init];
+    [self.navigationController presentViewController:selectCityVC animated:YES completion:nil];
 }
 - (void)searchActivityAction:(UIBarButtonItem *)barBtn{
-    
+    SearchViewController *searchVC = [[SearchViewController alloc]init];
+    [self.navigationController pushViewController:searchVC animated:YES];
 }
+//分类列表
 - (void)activityButtonAction:(UIButton *)btn{
-    
+    ClassifyViewController *classifyVC = [[ClassifyViewController alloc]init];
+    [self.navigationController pushViewController:classifyVC animated:YES];
 }
+//精选活动
 - (void)goodActivityButtonAction:(UIButton *)btn{
-    
+    GoodActivityViewController *goodVC = [[GoodActivityViewController alloc]init];
+    [self.navigationController pushViewController:goodVC animated:YES];
 }
+//热门专题
 - (void)hotActivityButtonAction:(UIButton *)btn{
-    
+    HotActivityViewController *hotVC = [[HotActivityViewController alloc]init];
+    [self.navigationController pushViewController:hotVC animated:YES];
 }
 
 
@@ -173,9 +199,9 @@
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
-    NSString *url = @"http://e.kumi.cn/app/v1.3/index.php?_s_=02a411494fa910f5177d82a6b0a63788&_t_=1451307342&channelid=appstore&cityid=1&lat=34.62172291944134&limit=30&lng=112.4149512442411&page=1";
+    NSString *url = kMainDataList;
     [manager GET:url parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
-        NSLog(@"%lld", downloadProgress.totalUnitCount);
+        WYLog(@"%lld", downloadProgress.totalUnitCount);
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         //*****************解析数据
         NSDictionary *dictionary = responseObject;
@@ -220,7 +246,7 @@
         
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        NSLog(@"%@", error);
+        WYLog(@"%@", error);
     }];
     //*****************
 //    NSString *URLString = @"http://e.kumi.cn/app/v1.3/index.php?";
