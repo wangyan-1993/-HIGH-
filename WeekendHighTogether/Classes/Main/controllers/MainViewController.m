@@ -94,12 +94,12 @@
 
 //自定义tableView头部
 - (void)configTableViewHeaderView{
-    UIView *headerView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 343)];
+    UIView *headerView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, kWidth, 343)];
     //添加轮播图
     UIScrollView *scrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 186)];
-    scrollView.contentSize = CGSizeMake(self.adArray.count * [UIScreen mainScreen].bounds.size.width, 186);
+    scrollView.contentSize = CGSizeMake(self.adArray.count * kWidth, 186);
     for (int i = 0; i < self.adArray.count; i ++) {
-        UIImageView *imageview = [[UIImageView alloc]initWithFrame:CGRectMake([UIScreen mainScreen].bounds.size.width * i, 0, [UIScreen mainScreen].bounds.size.width, 186)];
+        UIImageView *imageview = [[UIImageView alloc]initWithFrame:CGRectMake(kWidth * i, 0, kWidth, 186)];
         [imageview sd_setImageWithURL:self.adArray[i] placeholderImage:nil];
         [scrollView addSubview:imageview];
         
@@ -109,7 +109,7 @@
     //button
     for (int i = 0; i < 4; i ++) {
         UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
-        btn.frame = CGRectMake(i * [UIScreen mainScreen].bounds.size.width / 4, 186, [UIScreen mainScreen].bounds.size.width / 4, [UIScreen mainScreen].bounds.size.width / 4);
+        btn.frame = CGRectMake(i * kWidth / 4, 186, kWidth / 4, kWidth / 4);
         [btn setImage:[UIImage imageNamed:[NSString stringWithFormat:@"%d", i + 1]] forState:UIControlStateNormal];
         btn.tag = 100 + i;
         [btn addTarget:self action:@selector(activityButtonAction:) forControlEvents:UIControlEventTouchUpInside];
@@ -119,12 +119,12 @@
     //竞选活动&热门专题
    
         UIButton *btn1 = [UIButton buttonWithType:UIButtonTypeCustom];
-        btn1.frame = CGRectMake(0, 186 + [UIScreen mainScreen].bounds.size.width / 4, [UIScreen mainScreen].bounds.size.width / 2, 343 - 186 - [UIScreen mainScreen].bounds.size.width / 4);
+        btn1.frame = CGRectMake(0, 186 + kWidth / 4, kWidth / 2, 343 - 186 - kWidth / 4);
         [btn1 setImage:[UIImage imageNamed:@"home_huodong"]forState:UIControlStateNormal];
         [btn1 addTarget:self action:@selector(goodActivityButtonAction:) forControlEvents:UIControlEventTouchUpInside];
         [headerView addSubview:btn1];
     UIButton *btn2 = [UIButton buttonWithType:UIButtonTypeCustom];
-    btn2.frame = CGRectMake([UIScreen mainScreen].bounds.size.width / 2, 186 + [UIScreen mainScreen].bounds.size.width / 4, [UIScreen mainScreen].bounds.size.width / 2, 343 - 186 - [UIScreen mainScreen].bounds.size.width / 4);
+    btn2.frame = CGRectMake(kWidth / 2, 186 + kWidth / 4, kWidth / 2, 343 - 186 - kWidth / 4);
     [btn2 setImage:[UIImage imageNamed:@"home_zhuanti"]forState:UIControlStateNormal];
     [btn2 addTarget:self action:@selector(hotActivityButtonAction:) forControlEvents:UIControlEventTouchUpInside];
     [headerView addSubview:btn2];
