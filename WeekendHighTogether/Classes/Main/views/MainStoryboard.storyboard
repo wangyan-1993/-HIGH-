@@ -62,10 +62,10 @@
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="多少人已收藏" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qpq-4f-f3V">
-                                        <rect key="frame" x="250" y="216" width="125" height="31"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="多少人已收藏" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qpq-4f-f3V">
+                                        <rect key="frame" x="266" y="216" width="101" height="29"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="grayLine.png" translatesAutoresizingMaskIntoConstraints="NO" id="Qo4-xm-zzU">
@@ -130,6 +130,12 @@
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AMY-Y9-Lwo">
                                         <rect key="frame" x="0.0" y="322" width="375" height="34"/>
                                     </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="起止时间" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="URr-cO-IXB">
+                                        <rect key="frame" x="8" y="216" width="234" height="29"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <color key="textColor" red="0.94098252058029175" green="0.42262178659439087" blue="0.028435045853257179" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                             </scrollView>
                         </subviews>
@@ -138,6 +144,7 @@
                             <outlet property="activityAddressLable" destination="wnQ-QW-v2j" id="asU-yW-BX2"/>
                             <outlet property="activityPhoneLable" destination="H3Z-CP-FrX" id="BS2-pG-yjh"/>
                             <outlet property="activityPriceLable" destination="RhR-cd-Z7l" id="Lz1-eg-sJX"/>
+                            <outlet property="activityTimeLable" destination="URr-cO-IXB" id="VZP-58-raI"/>
                             <outlet property="activityTitleLable" destination="xyF-ce-BPl" id="bSx-Ih-aM9"/>
                             <outlet property="favoriteLable" destination="Qpq-4f-f3V" id="FFp-fy-CBJ"/>
                             <outlet property="headerImageView" destination="kkW-yq-MZf" id="gB8-DU-ba2"/>

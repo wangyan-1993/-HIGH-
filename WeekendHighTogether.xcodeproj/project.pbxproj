@@ -16,7 +16,8 @@
 		7A1437E21C3CC06D007FF822 /* HotActivityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A1437E11C3CC06D007FF822 /* HotActivityViewController.m */; };
 		7A1437E51C3D2031007FF822 /* UIViewController+Common.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A1437E41C3D2031007FF822 /* UIViewController+Common.m */; };
 		7A24D1371C3E10E0007CE522 /* ActivityView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A24D1361C3E10E0007CE522 /* ActivityView.m */; };
-		7A24D1391C3E15E3007CE522 /* activityFile in Resources */ = {isa = PBXBuildFile; fileRef = 7A24D1381C3E15E3007CE522 /* activityFile */; };
+		7A24D13F1C3E4CA9007CE522 /* HWTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A24D13E1C3E4CA9007CE522 /* HWTools.m */; };
+		7A24D1411C3E5782007CE522 /* File1 in Resources */ = {isa = PBXBuildFile; fileRef = 7A24D1401C3E5782007CE522 /* File1 */; };
 		7A8B03B31C3A1C3A00FFCBA0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A8B03B21C3A1C3A00FFCBA0 /* main.m */; };
 		7A8B03B61C3A1C3A00FFCBA0 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A8B03B51C3A1C3A00FFCBA0 /* AppDelegate.m */; };
 		7A8B03B81C3A1C3A00FFCBA0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A8B03B71C3A1C3A00FFCBA0 /* Assets.xcassets */; };
@@ -39,7 +40,7 @@
 		3EB1357DE69483C95E139891 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		730F5D6BD68882D6C40E7079 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A1437801C3C93DD007FF822 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
-		7A1437CD1C3CB307007FF822 /* WHTHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHTHeader.h; sourceTree = "<group>"; };
+		7A1437CD1C3CB307007FF822 /* WHTHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WHTHeader.h; path = ../WHTHeader.h; sourceTree = "<group>"; };
 		7A1437CE1C3CBBFC007FF822 /* SelectCityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectCityViewController.h; sourceTree = "<group>"; };
 		7A1437CF1C3CBBFC007FF822 /* SelectCityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectCityViewController.m; sourceTree = "<group>"; };
 		7A1437D11C3CBD94007FF822 /* SearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
@@ -58,7 +59,9 @@
 		7A1437E41C3D2031007FF822 /* UIViewController+Common.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIViewController+Common.m"; path = "../Classes/Main/controllers/UIViewController+Common.m"; sourceTree = "<group>"; };
 		7A24D1351C3E10E0007CE522 /* ActivityView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityView.h; sourceTree = "<group>"; };
 		7A24D1361C3E10E0007CE522 /* ActivityView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityView.m; sourceTree = "<group>"; };
-		7A24D1381C3E15E3007CE522 /* activityFile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = activityFile; sourceTree = "<group>"; };
+		7A24D13D1C3E4CA9007CE522 /* HWTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HWTools.h; sourceTree = "<group>"; };
+		7A24D13E1C3E4CA9007CE522 /* HWTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HWTools.m; sourceTree = "<group>"; };
+		7A24D1401C3E5782007CE522 /* File1 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = File1; sourceTree = "<group>"; };
 		7A8B03AE1C3A1C3A00FFCBA0 /* WeekendHighTogether.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeekendHighTogether.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A8B03B21C3A1C3A00FFCBA0 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		7A8B03B41C3A1C3A00FFCBA0 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -118,6 +121,7 @@
 			children = (
 				7A8B03B41C3A1C3A00FFCBA0 /* AppDelegate.h */,
 				7A8B03B51C3A1C3A00FFCBA0 /* AppDelegate.m */,
+				7A1437801C3C93DD007FF822 /* PrefixHeader.pch */,
 				7A8B03CE1C3A4E3300FFCBA0 /* Classes */,
 				7A8B03E11C3A4E3300FFCBA0 /* Library */,
 				7A8B03E51C3A4FA700FFCBA0 /* Resources */,
@@ -125,8 +129,6 @@
 				7A8B03B91C3A1C3A00FFCBA0 /* LaunchScreen.storyboard */,
 				7A8B03BC1C3A1C3A00FFCBA0 /* Info.plist */,
 				7A8B03B11C3A1C3A00FFCBA0 /* Supporting Files */,
-				7A1437801C3C93DD007FF822 /* PrefixHeader.pch */,
-				7A1437CD1C3CB307007FF822 /* WHTHeader.h */,
 			);
 			path = WeekendHighTogether;
 			sourceTree = "<group>";
@@ -221,8 +223,8 @@
 			children = (
 				7A9708C61C3BA06500C1C566 /* MainModel.h */,
 				7A9708C71C3BA06500C1C566 /* MainModel.m */,
-				7A24D1381C3E15E3007CE522 /* activityFile */,
 				7A9708CB1C3BA0DF00C1C566 /* File */,
+				7A24D1401C3E5782007CE522 /* File1 */,
 			);
 			path = models;
 			sourceTree = "<group>";
@@ -279,6 +281,9 @@
 			children = (
 				7A1437E31C3D2031007FF822 /* UIViewController+Common.h */,
 				7A1437E41C3D2031007FF822 /* UIViewController+Common.m */,
+				7A24D13D1C3E4CA9007CE522 /* HWTools.h */,
+				7A24D13E1C3E4CA9007CE522 /* HWTools.m */,
+				7A1437CD1C3CB307007FF822 /* WHTHeader.h */,
 			);
 			path = Library;
 			sourceTree = "<group>";
@@ -368,12 +373,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				7A8B03F01C3A766D00FFCBA0 /* MainTableViewCell.xib in Resources */,
-				7A24D1391C3E15E3007CE522 /* activityFile in Resources */,
 				7A8B03E91C3A507A00FFCBA0 /* DiscoverStoryboard.storyboard in Resources */,
 				7A8B03E71C3A505C00FFCBA0 /* MainStoryboard.storyboard in Resources */,
 				7A9708CC1C3BA0DF00C1C566 /* File in Resources */,
 				7A8B03B81C3A1C3A00FFCBA0 /* Assets.xcassets in Resources */,
 				7A8B03BB1C3A1C3A00FFCBA0 /* LaunchScreen.storyboard in Resources */,
+				7A24D1411C3E5782007CE522 /* File1 in Resources */,
 				7A8B03EB1C3A50A200FFCBA0 /* MineStoryboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -433,6 +438,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7A24D13F1C3E4CA9007CE522 /* HWTools.m in Sources */,
 				7A1437DC1C3CBFE1007FF822 /* ClassifyViewController.m in Sources */,
 				7A24D1371C3E10E0007CE522 /* ActivityView.m in Sources */,
 				7A1437E21C3CC06D007FF822 /* HotActivityViewController.m in Sources */,

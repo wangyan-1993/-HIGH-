@@ -17,7 +17,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *activityPriceLable;
 @property (weak, nonatomic) IBOutlet UILabel *activityAddressLable;
 @property (weak, nonatomic) IBOutlet UILabel *activityPhoneLable;
-
 @end
 
 
@@ -28,12 +27,26 @@
 
 //在set方法中赋值
 - (void)setDataDic:(NSDictionary *)dataDic{
-    [self.headerImageView sd_setImageWithURL:[NSURL URLWithString:dataDic[@"image"]] placeholderImage:nil];
+    //活动图片
+    NSArray *urls = dataDic[@"urls"];
+    [self.headerImageView sd_setImageWithURL:[NSURL URLWithString:urls[0]] placeholderImage:nil];
+    //活动标题
     self.activityTitleLable.text = dataDic[@"title"];
     self.favoriteLable.text = [NSString stringWithFormat:@"%@人已收藏", dataDic[@"fav"]];
-    self.activityPriceLable.text = dataDic[@"price"];
+    //活动价格
+    self.activityPriceLable.text = dataDic[@"pricedesc"];
+    //活动地址
     self.activityAddressLable.text = dataDic[@"address"];
+    //活动联系电话
     self.activityPhoneLable.text = dataDic[@"tel"];
+    //活动起止时间
+    NSString *startTime = [HWTools getDateFromString:dataDic[@"new_start_date"]];
+    NSString *endTime = [HWTools getDateFromString:dataDic[@"new_end_date"]];
+    self.activityTimeLable.text = [NSString stringWithFormat:@"正在进行:%@-%@", startTime, endTime];
+    
+    
+    
+    
 }
 
 /*
