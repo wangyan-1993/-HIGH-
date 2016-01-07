@@ -45,7 +45,7 @@
        // WYLog(@"%@", downloadProgress);
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         [MBProgressHUD hideHUDForView:self.view animated:YES];
-         WYLog(@"%@", responseObject);
+         //WYLog(@"%@", responseObject);
         //解析数据
         NSDictionary *dic = responseObject;
         NSString *status = dic[@"status"];

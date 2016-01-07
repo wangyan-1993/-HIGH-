@@ -9,6 +9,8 @@
 #import "HWTools.h"
 
 @implementation HWTools
+
+#pragma mark---时间转换
 + (NSString *)getDateFromString:(NSString *)timestamp{
     NSDate *date =[NSDate dateWithTimeIntervalSince1970:[timestamp doubleValue]];
      NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
@@ -18,4 +20,13 @@
     NSString *time = [formatter stringFromDate:date];
     return time;
 }
+#pragma mark---计算高度
+
++ (CGFloat)getTextHeightWithText:(NSString *)text bigestSize:(CGSize)bigSize font:(CGFloat)font{
+    CGRect textRect = [text boundingRectWithSize:bigSize options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:font]} context:nil];
+    return textRect.size.height;
+}
+
+
+
 @end
