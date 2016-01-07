@@ -202,7 +202,9 @@
     //
     NSString *type = self.adArray[btn.tag - 200][@"type"];
     if ([type integerValue] == 1) {
-        ActivityViewController *activityVC = [[ActivityViewController alloc]init];
+        
+        UIStoryboard *mainStoryBoard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
+        ActivityViewController *activityVC = [mainStoryBoard instantiateViewControllerWithIdentifier:@"Activity"];
         activityVC.activityId = self.adArray[btn.tag - 200][@"id"];
         [self.navigationController pushViewController:activityVC animated:YES];
     }else{

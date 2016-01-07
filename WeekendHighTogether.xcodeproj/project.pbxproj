@@ -15,6 +15,8 @@
 		7A1437DF1C3CC05C007FF822 /* GoodActivityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A1437DE1C3CC05C007FF822 /* GoodActivityViewController.m */; };
 		7A1437E21C3CC06D007FF822 /* HotActivityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A1437E11C3CC06D007FF822 /* HotActivityViewController.m */; };
 		7A1437E51C3D2031007FF822 /* UIViewController+Common.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A1437E41C3D2031007FF822 /* UIViewController+Common.m */; };
+		7A24D1371C3E10E0007CE522 /* ActivityView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A24D1361C3E10E0007CE522 /* ActivityView.m */; };
+		7A24D1391C3E15E3007CE522 /* activityFile in Resources */ = {isa = PBXBuildFile; fileRef = 7A24D1381C3E15E3007CE522 /* activityFile */; };
 		7A8B03B31C3A1C3A00FFCBA0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A8B03B21C3A1C3A00FFCBA0 /* main.m */; };
 		7A8B03B61C3A1C3A00FFCBA0 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A8B03B51C3A1C3A00FFCBA0 /* AppDelegate.m */; };
 		7A8B03B81C3A1C3A00FFCBA0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A8B03B71C3A1C3A00FFCBA0 /* Assets.xcassets */; };
@@ -54,6 +56,9 @@
 		7A1437E11C3CC06D007FF822 /* HotActivityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HotActivityViewController.m; sourceTree = "<group>"; };
 		7A1437E31C3D2031007FF822 /* UIViewController+Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIViewController+Common.h"; path = "../Classes/Main/controllers/UIViewController+Common.h"; sourceTree = "<group>"; };
 		7A1437E41C3D2031007FF822 /* UIViewController+Common.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIViewController+Common.m"; path = "../Classes/Main/controllers/UIViewController+Common.m"; sourceTree = "<group>"; };
+		7A24D1351C3E10E0007CE522 /* ActivityView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityView.h; sourceTree = "<group>"; };
+		7A24D1361C3E10E0007CE522 /* ActivityView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityView.m; sourceTree = "<group>"; };
+		7A24D1381C3E15E3007CE522 /* activityFile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = activityFile; sourceTree = "<group>"; };
 		7A8B03AE1C3A1C3A00FFCBA0 /* WeekendHighTogether.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeekendHighTogether.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A8B03B21C3A1C3A00FFCBA0 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		7A8B03B41C3A1C3A00FFCBA0 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -216,6 +221,7 @@
 			children = (
 				7A9708C61C3BA06500C1C566 /* MainModel.h */,
 				7A9708C71C3BA06500C1C566 /* MainModel.m */,
+				7A24D1381C3E15E3007CE522 /* activityFile */,
 				7A9708CB1C3BA0DF00C1C566 /* File */,
 			);
 			path = models;
@@ -228,6 +234,8 @@
 				7A8B03EC1C3A766D00FFCBA0 /* MainTableViewCell.h */,
 				7A8B03ED1C3A766D00FFCBA0 /* MainTableViewCell.m */,
 				7A8B03EE1C3A766D00FFCBA0 /* MainTableViewCell.xib */,
+				7A24D1351C3E10E0007CE522 /* ActivityView.h */,
+				7A24D1361C3E10E0007CE522 /* ActivityView.m */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -360,6 +368,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7A8B03F01C3A766D00FFCBA0 /* MainTableViewCell.xib in Resources */,
+				7A24D1391C3E15E3007CE522 /* activityFile in Resources */,
 				7A8B03E91C3A507A00FFCBA0 /* DiscoverStoryboard.storyboard in Resources */,
 				7A8B03E71C3A505C00FFCBA0 /* MainStoryboard.storyboard in Resources */,
 				7A9708CC1C3BA0DF00C1C566 /* File in Resources */,
@@ -425,6 +434,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7A1437DC1C3CBFE1007FF822 /* ClassifyViewController.m in Sources */,
+				7A24D1371C3E10E0007CE522 /* ActivityView.m in Sources */,
 				7A1437E21C3CC06D007FF822 /* HotActivityViewController.m in Sources */,
 				7A8B03EF1C3A766D00FFCBA0 /* MainTableViewCell.m in Sources */,
 				7A1437DF1C3CC05C007FF822 /* GoodActivityViewController.m in Sources */,
