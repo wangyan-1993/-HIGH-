@@ -23,7 +23,7 @@
     
     
     //UITabBarController
-    UITabBarController *tabBarVC = [[UITabBarController alloc]init];
+    self.tabBarVC = [[UITabBarController alloc]init];
     //创建被tabBarVC管理的试图控制器
     //主页
     UIStoryboard *mainStoryBoard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
@@ -51,9 +51,9 @@
     mineNav.tabBarItem.selectedImage = [selectImage3 imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     
     //添加被管理的试图控制器
-    tabBarVC.viewControllers = @[mainNav, discoverNav, mineNav];
-    tabBarVC.tabBar.barTintColor = [UIColor whiteColor];
-    self.window.rootViewController = tabBarVC;
+    self.tabBarVC.viewControllers = @[mainNav, discoverNav, mineNav];
+    self.tabBarVC.tabBar.barTintColor = [UIColor whiteColor];
+    self.window.rootViewController = self.tabBarVC;
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     return YES;

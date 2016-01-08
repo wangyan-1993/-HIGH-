@@ -1,7 +1,7 @@
 //
 //  GoodActivityViewController.m
 //  WeekendHighTogether
-//
+//  精选活动
 //  Created by SCJY on 16/1/6.
 //  Copyright © 2016年 SCJY. All rights reserved.
 //
@@ -17,6 +17,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    [self showBackBtn];
 }
 
 - (void)didReceiveMemoryWarning {

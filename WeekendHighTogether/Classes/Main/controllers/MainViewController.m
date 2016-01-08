@@ -5,7 +5,7 @@
 //  Created by SCJY on 16/1/4.
 //  Copyright © 2016年 SCJY. All rights reserved.
 //
-
+#import "AppDelegate.h"
 #import "MainViewController.h"
 #import "MainTableViewCell.h"
 #import <AFNetworking/AFHTTPSessionManager.h>
@@ -69,6 +69,10 @@
     [self requestModel];
     //启动定时器
     [self addTime];
+}
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    self.tabBarController.tabBar.hidden = NO;
 }
 
 #pragma mark---UITableViewDataSource
@@ -164,11 +168,16 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    MainModel *mainModel = self.listArray[indexPath.section][indexPath.row];
+    
     if (indexPath.section == 0) {
-        ActivityViewController *activityVC = [[ActivityViewController alloc]init];
+        UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
+        ActivityViewController *activityVC = [mainStoryboard instantiateViewControllerWithIdentifier:@"Activity"];
+        activityVC.activityId = mainModel.actuvityId;
         [self.navigationController pushViewController:activityVC animated:YES];
     }else{
         ThemeViewController *themeVC = [[ThemeViewController alloc]init];
+        themeVC.themeid = mainModel.actuvityId; 
         [self.navigationController pushViewController:themeVC animated:YES];
     }
 }
@@ -197,7 +206,7 @@
     HotActivityViewController *hotVC = [[HotActivityViewController alloc]init];
     [self.navigationController pushViewController:hotVC animated:YES];
 }
-
+//点击广告
 - (void)touchAD:(UIButton *)btn{
     //
     NSString *type = self.adArray[btn.tag - 200][@"type"];
@@ -208,8 +217,11 @@
         activityVC.activityId = self.adArray[btn.tag - 200][@"id"];
         [self.navigationController pushViewController:activityVC animated:YES];
     }else{
-        HotActivityViewController *hot = [[HotActivityViewController alloc]init];
-        [self.navigationController pushViewController:hot animated:YES];
+        ThemeViewController *themeVC = [[ThemeViewController alloc]init];
+        themeVC.themeid = self.adArray[btn.tag - 200][@"id"];
+        //推出的时候隐藏TabBar
+        //themeVC.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:themeVC animated:YES];
     }
     
     
@@ -381,10 +393,13 @@
 }
 //每两秒执行一次，图片自动轮播
 - (void)move{
+    //数组元素个数可能为0， 如果为0 的时候没有意义
+    if (self.adArray.count > 0) {
     NSInteger rollPage = (self.pageControl.currentPage + 1) % self.adArray.count;
     self.pageControl.currentPage = rollPage;
     //计算scrollView的偏移量
     [self.scrollView setContentOffset:CGPointMake(self.pageControl.currentPage * kWidth, 0)];
+    }
 }
 //当手动去滑动scrollView的时候，定时器依然在计算时间，可能我们刚刚滑动到下一页，定时器时间刚好触发，导致在当前页停留的时间不到2秒
 //解决方案：添加下面两个方法

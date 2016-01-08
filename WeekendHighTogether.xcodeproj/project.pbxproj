@@ -33,6 +33,8 @@
 		7A8B03F01C3A766D00FFCBA0 /* MainTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A8B03EE1C3A766D00FFCBA0 /* MainTableViewCell.xib */; };
 		7A9708C81C3BA06500C1C566 /* MainModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A9708C71C3BA06500C1C566 /* MainModel.m */; };
 		7A9708CC1C3BA0DF00C1C566 /* File in Resources */ = {isa = PBXBuildFile; fileRef = 7A9708CB1C3BA0DF00C1C566 /* File */; };
+		7ACE528B1C3F5D3A00924255 /* ThemePList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7ACE528A1C3F5D3A00924255 /* ThemePList.plist */; };
+		7ACE528E1C3F5EC400924255 /* ThemeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ACE528D1C3F5EC400924255 /* ThemeView.m */; };
 		D1682E872E7C53838E04F830 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 730F5D6BD68882D6C40E7079 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -87,6 +89,9 @@
 		7A9708C61C3BA06500C1C566 /* MainModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainModel.h; sourceTree = "<group>"; };
 		7A9708C71C3BA06500C1C566 /* MainModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainModel.m; sourceTree = "<group>"; };
 		7A9708CB1C3BA0DF00C1C566 /* File */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = File; sourceTree = "<group>"; };
+		7ACE528A1C3F5D3A00924255 /* ThemePList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ThemePList.plist; sourceTree = "<group>"; };
+		7ACE528C1C3F5EC400924255 /* ThemeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThemeView.h; sourceTree = "<group>"; };
+		7ACE528D1C3F5EC400924255 /* ThemeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThemeView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -226,6 +231,7 @@
 			children = (
 				7A9708C61C3BA06500C1C566 /* MainModel.h */,
 				7A9708C71C3BA06500C1C566 /* MainModel.m */,
+				7ACE528A1C3F5D3A00924255 /* ThemePList.plist */,
 				7A9708CB1C3BA0DF00C1C566 /* File */,
 				7A24D1401C3E5782007CE522 /* File1 */,
 			);
@@ -241,6 +247,8 @@
 				7A8B03EE1C3A766D00FFCBA0 /* MainTableViewCell.xib */,
 				7A24D1351C3E10E0007CE522 /* ActivityView.h */,
 				7A24D1361C3E10E0007CE522 /* ActivityView.m */,
+				7ACE528C1C3F5EC400924255 /* ThemeView.h */,
+				7ACE528D1C3F5EC400924255 /* ThemeView.m */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -385,6 +393,7 @@
 				7A8B03BB1C3A1C3A00FFCBA0 /* LaunchScreen.storyboard in Resources */,
 				7A24D1411C3E5782007CE522 /* File1 in Resources */,
 				7A8B03EB1C3A50A200FFCBA0 /* MineStoryboard.storyboard in Resources */,
+				7ACE528B1C3F5D3A00924255 /* ThemePList.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -458,6 +467,7 @@
 				7A1437D91C3CBF41007FF822 /* ThemeViewController.m in Sources */,
 				7A1437D01C3CBBFC007FF822 /* SelectCityViewController.m in Sources */,
 				7A8B03E31C3A4E3300FFCBA0 /* MainViewController.m in Sources */,
+				7ACE528E1C3F5EC400924255 /* ThemeView.m in Sources */,
 				7A9708C81C3BA06500C1C566 /* MainModel.m in Sources */,
 				7A1437E51C3D2031007FF822 /* UIViewController+Common.m in Sources */,
 				7A1437D61C3CBE72007FF822 /* ActivityViewController.m in Sources */,

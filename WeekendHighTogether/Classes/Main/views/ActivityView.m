@@ -9,6 +9,9 @@
 #import "ActivityView.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 @interface ActivityView()
+{
+    CGFloat sumHeight;
+}
 
 @property (weak, nonatomic) IBOutlet UIImageView *headerImageView;
 @property (weak, nonatomic) IBOutlet UILabel *activityTitleLable;
@@ -45,16 +48,18 @@
     NSString *endTime = [HWTools getDateFromString:dataDic[@"new_end_date"]];
     self.activityTimeLable.text = [NSString stringWithFormat:@"正在进行:%@-%@", startTime, endTime];
     [self drawContentWithArray:dataDic[@"content"]];
-   
-}
+    
+    [self drawReminderWithString:dataDic[@"reminder"]];
+    
+    }
 - (void)drawContentWithArray:(NSArray *)contentArray{
     //计算总高度
-     NSInteger sumHeight = 0;
+    sumHeight = 390;
     for (NSDictionary *dic in contentArray) {
         //如果标题存在
         NSString *title = dic[@"title"];
         if (title != nil) {
-            UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(10, 390 + sumHeight, kWidth - 20, 30)];
+            UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(10, sumHeight, kWidth - 20, 30)];
             label.text = title;
             [self.mainScrollView addSubview:label];
             //sumHeight加上title的高度
@@ -63,7 +68,7 @@
         
         CGFloat height = [HWTools getTextHeightWithText:dic[@"description"] bigestSize:CGSizeMake(kWidth - 20, 1000) font:15.0];
         //每循环一次，label的起始位置变化
-        UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(10, 390 + sumHeight , kWidth - 20, height)];
+        UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(10,  sumHeight , kWidth - 20, height)];
         label.text = dic[@"description"];
         label.numberOfLines = 0;
         label.font = [UIFont systemFontOfSize:15.0];
@@ -72,7 +77,7 @@
          sumHeight += height;
         NSArray *urlsArray = dic[@"urls"];
         //计算图片的高度
-        NSInteger sum = 0;
+        CGFloat sum = 0;
         for (NSDictionary *dict in urlsArray) {
             CGFloat width = [dict[@"width"] integerValue] / 2;
             CGFloat imageHeight = [dict[@"height"]integerValue] / 2;
@@ -82,14 +87,39 @@
             [self.mainScrollView addSubview:imageView];
             //sum加上这一张图片的高度，以便下次循环计算下张图片的起始位置
             sum += (kWidth - 20) / width * imageHeight + 5;
-            //sumHeight通过每一次循环加上图片的高度，以便计算一个数组里面的总高度，方便下一个数组起始位置的计算
-            sumHeight += (kWidth - 20) / width * imageHeight + 5;
+            
         }
-       
+        //sumHeight加上图片的高度，以便计算一个数组里面的总高度，方便下一个数组起始位置的计算
+        sumHeight += sum;
+        
     }
-    self.mainScrollView.contentSize = CGSizeMake(kWidth, sumHeight + 460);
 }
-
+//温馨提示下面的东西
+- (void)drawReminderWithString:(NSString *)str{
+    
+    UIImageView *view = [[UIImageView alloc]initWithFrame:CGRectMake(0, sumHeight, kWidth, 5)];
+    view.backgroundColor = [UIColor lightGrayColor];
+    [self.mainScrollView addSubview:view];
+    
+    UILabel *reminderTitle = [[UILabel alloc]initWithFrame:CGRectMake(38, sumHeight + 5, kWidth - 38, 25)];
+    reminderTitle.text = @"温馨提示";
+    [self.mainScrollView addSubview:reminderTitle];
+    
+    UIImageView *litleView = [[UIImageView alloc]initWithFrame:CGRectMake(0, sumHeight + 30, kWidth, 0.5)];
+    litleView.backgroundColor = [UIColor lightGrayColor];
+    [self.mainScrollView addSubview:litleView];
+    
+    CGFloat reminderHeight = [HWTools getTextHeightWithText:str bigestSize:CGSizeMake(kWidth - 20, 1000) font:15.0];
+    UILabel *reminder = [[UILabel alloc]initWithFrame:CGRectMake(10, sumHeight + 31, kWidth - 20, reminderHeight)];
+    reminder.text = str;
+    reminder.font = [UIFont systemFontOfSize:15.0];
+    reminder.numberOfLines = 0;
+    [self.mainScrollView addSubview:reminder];
+    self.mainScrollView.contentSize = CGSizeMake(kWidth, reminder.bottom + 30);
+    
+    
+    
+}
 /*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.

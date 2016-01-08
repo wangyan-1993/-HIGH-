@@ -1,24 +1,58 @@
 //
 //  ThemeViewController.m
 //  WeekendHighTogether
-//
+//  活动专题
 //  Created by SCJY on 16/1/6.
 //  Copyright © 2016年 SCJY. All rights reserved.
 //
 
 #import "ThemeViewController.h"
-
+#import <AFNetworking/AFHTTPSessionManager.h>
+#import "ThemeView.h"
 @interface ThemeViewController ()
-
+@property(nonatomic, strong) ThemeView *themeView;
 @end
 
 @implementation ThemeViewController
-
+- (void)loadView{
+    [super loadView];
+    self.themeView = [[ThemeView alloc]initWithFrame:self.view.frame];
+        self.view = self.themeView;
+    [self getModel];
+    
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.tabBarController.tabBar.hidden = YES;
+    [self showBackBtn];
+    
+    
 }
 
+#pragma mark ------ custom method
+- (void)getModel{
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
+    
+    [manager GET:[NSString stringWithFormat:@"%@&id=%@", kActivityTheme, self.themeid] parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
+         WYLog(@"%@", downloadProgress);
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        NSDictionary *dic = responseObject;
+        NSString *status = dic[@"status"];
+        NSInteger code = [dic[@"code"] integerValue];
+        if ([status isEqualToString:@"success"] && code == 0) {
+            self.themeView.dataDic = dic[@"success"];
+            self.title = dic[@"success"][@"title"];
+        }else{
+            
+        }
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        
+        WYLog(@"error = %@", error);
+    }];
+
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
