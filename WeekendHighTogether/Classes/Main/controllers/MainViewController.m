@@ -199,11 +199,13 @@
 //精选活动
 - (void)goodActivityButtonAction:(UIButton *)btn{
     GoodActivityViewController *goodVC = [[GoodActivityViewController alloc]init];
+   
     [self.navigationController pushViewController:goodVC animated:YES];
 }
 //热门专题
 - (void)hotActivityButtonAction:(UIButton *)btn{
     HotActivityViewController *hotVC = [[HotActivityViewController alloc]init];
+    
     [self.navigationController pushViewController:hotVC animated:YES];
 }
 //点击广告
@@ -220,7 +222,7 @@
         ThemeViewController *themeVC = [[ThemeViewController alloc]init];
         themeVC.themeid = self.adArray[btn.tag - 200][@"id"];
         //推出的时候隐藏TabBar
-        //themeVC.hidesBottomBarWhenPushed = YES;
+//        themeVC.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:themeVC animated:YES];
     }
     

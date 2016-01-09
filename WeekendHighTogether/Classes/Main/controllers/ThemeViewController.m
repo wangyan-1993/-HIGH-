@@ -1,7 +1,7 @@
 //
 //  ThemeViewController.m
 //  WeekendHighTogether
-//  活动专题
+//  热门专题， 推荐专题
 //  Created by SCJY on 16/1/6.
 //  Copyright © 2016年 SCJY. All rights reserved.
 //

@@ -18,7 +18,7 @@
     self.navigationItem.leftBarButtonItem = leftBarBtn;
 }
 - (void)backBtnAction{
-    [self.navigationController popToRootViewControllerAnimated:YES];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 @end

@@ -20,6 +20,19 @@
     NSString *time = [formatter stringFromDate:date];
     return time;
 }
+#pragma mark---获取当前系统时间
++ (NSDate *)getSystemNowDate{
+    NSDateFormatter *df = [[NSDateFormatter alloc] init ];
+    df.dateFormat = @"yyyy-MM-dd HH:mm";
+    NSString *dateStr = [df stringFromDate:[NSDate date]];
+    NSDate *date = [df dateFromString:dateStr];
+    return date;
+}
+
+
+
+
+
 #pragma mark---计算高度
 
 + (CGFloat)getTextHeightWithText:(NSString *)text bigestSize:(CGSize)bigSize font:(CGFloat)font{

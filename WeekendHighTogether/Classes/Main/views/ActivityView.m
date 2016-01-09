@@ -116,9 +116,6 @@
     reminder.numberOfLines = 0;
     [self.mainScrollView addSubview:reminder];
     self.mainScrollView.contentSize = CGSizeMake(kWidth, reminder.bottom + 30);
-    
-    
-    
 }
 /*
 // Only override drawRect: if you perform custom drawing.

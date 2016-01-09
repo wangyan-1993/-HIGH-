@@ -1,7 +1,7 @@
 //
 //  ActivityViewController.m
 //  WeekendHighTogether
-//  活动详情
+//  精选活动，推荐活动
 //  Created by SCJY on 16/1/6.
 //  Copyright © 2016年 SCJY. All rights reserved.
 //
