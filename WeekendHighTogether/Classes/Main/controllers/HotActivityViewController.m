@@ -10,6 +10,7 @@
 #import "PullingRefreshTableView.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "ThemeViewController.h"
+#import "HotActivityTableViewCell.h"
 @interface HotActivityViewController ()<UITableViewDataSource, UITableViewDelegate, PullingRefreshTableViewDelegate>
 {
     NSInteger _pageCount;
@@ -19,7 +20,7 @@
 @property(nonatomic, assign) BOOL refreshing;
 @property(nonatomic, strong) NSMutableArray *arrayImage;
 @property(nonatomic, strong) NSMutableArray *arrayID;
-
+@property(nonatomic, strong) NSMutableArray *arrayCount;
 @end
 
 @implementation HotActivityViewController
@@ -30,6 +31,7 @@
     [self showBackBtn];
     self.title = @"热门专题";
     self.tableView = [[PullingRefreshTableView alloc]initWithFrame:CGRectMake(0, 0, kWidth, kHeigth - 64) pullingDelegate:self];
+     [self.tableView registerNib:[UINib nibWithNibName:@"HotActivityTableViewCell" bundle:nil] forCellReuseIdentifier:@"hotcell"];
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     self.tableView.rowHeight = 200;
@@ -43,16 +45,21 @@
     return self.arrayImage.count;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    static NSString *str = @"123";
-    UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:str];
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:str];
-    }
-    UIImageView *iamgeview = [[UIImageView alloc]initWithFrame:CGRectMake(5, 3, kWidth - 10, 194)];
-    [iamgeview sd_setImageWithURL:[NSURL URLWithString:self.arrayImage[indexPath.row]] placeholderImage:nil];
-    iamgeview.userInteractionEnabled =YES;
-    [cell addSubview:iamgeview];
+//    static NSString *str = @"123";
+//    UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:str];
+//    if (cell == nil) {
+//        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:str];
+//    }
+//    UIImageView *iamgeview = [[UIImageView alloc]initWithFrame:CGRectMake(5, 3, kWidth - 10, 194)];
+//    [iamgeview sd_setImageWithURL:[NSURL URLWithString:self.arrayImage[indexPath.row]] placeholderImage:nil];
+//    iamgeview.userInteractionEnabled =YES;
+//    [cell addSubview:iamgeview];
+//    return cell;
+    HotActivityTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"hotcell" forIndexPath:indexPath];
+    [cell.image sd_setImageWithURL:[NSURL URLWithString:self.arrayImage[indexPath.row]] placeholderImage:nil];
+    cell.coubtsLabel.text = self.arrayCount[indexPath.row];
     return cell;
+    
 }
 #pragma mark--- <UITableViewDelegate>
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -98,6 +105,7 @@
             for (NSDictionary *dic in array) {
                 [self.arrayImage addObject:dic[@"img"]];
                 [self.arrayID addObject:dic[@"id"]];
+                [self.arrayCount addObject:dic[@"counts"]];
             }
         }
           [self.tableView reloadData];
@@ -133,6 +141,14 @@
         self.arrayID = [NSMutableArray new];
     }
     return _arrayID;
+}
+
+
+- (NSMutableArray *)arrayCount{
+    if (_arrayCount == nil) {
+        self.arrayCount = [NSMutableArray new];
+    }
+    return _arrayCount;
 }
 
 - (void)didReceiveMemoryWarning {
