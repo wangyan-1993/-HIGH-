@@ -8,7 +8,6 @@
 
 #import "HotActivityViewController.h"
 #import "PullingRefreshTableView.h"
-#import <SDWebImage/UIImageView+WebCache.h>
 #import "ThemeViewController.h"
 #import "HotActivityTableViewCell.h"
 @interface HotActivityViewController ()<UITableViewDataSource, UITableViewDelegate, PullingRefreshTableViewDelegate>
@@ -21,6 +20,7 @@
 @property(nonatomic, strong) NSMutableArray *arrayImage;
 @property(nonatomic, strong) NSMutableArray *arrayID;
 @property(nonatomic, strong) NSMutableArray *arrayCount;
+
 @end
 
 @implementation HotActivityViewController
@@ -45,16 +45,6 @@
     return self.arrayImage.count;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-//    static NSString *str = @"123";
-//    UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:str];
-//    if (cell == nil) {
-//        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:str];
-//    }
-//    UIImageView *iamgeview = [[UIImageView alloc]initWithFrame:CGRectMake(5, 3, kWidth - 10, 194)];
-//    [iamgeview sd_setImageWithURL:[NSURL URLWithString:self.arrayImage[indexPath.row]] placeholderImage:nil];
-//    iamgeview.userInteractionEnabled =YES;
-//    [cell addSubview:iamgeview];
-//    return cell;
     HotActivityTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"hotcell" forIndexPath:indexPath];
     [cell.image sd_setImageWithURL:[NSURL URLWithString:self.arrayImage[indexPath.row]] placeholderImage:nil];
     cell.coubtsLabel.text = self.arrayCount[indexPath.row];
@@ -79,6 +69,7 @@
 //上拉
 - (void)pullingTableViewDidStartLoading:(PullingRefreshTableView *)tableView{
     _pageCount += 1;
+    self.refreshing = NO;
     [self performSelector:@selector(loadData) withObject:nil afterDelay:1.0];
     
 }
@@ -102,13 +93,29 @@
         if ([status isEqualToString:@"success"] && code == 0) {
             NSDictionary *dict = dic[@"success"];
             NSArray *array = dict[@"rcData"];
+            if (self.refreshing) {
+                //下拉刷新的时候需要移除数组中的元素
+                if (self.arrayImage.count > 0) {
+                    [self.arrayImage removeAllObjects];
+                }
+                if (self.arrayID.count > 0) {
+                    [self.arrayID removeAllObjects];
+                }
+                if (self.arrayCount.count > 0) {
+                    [self.arrayCount removeAllObjects];
+                }
+                
+            }
             for (NSDictionary *dic in array) {
                 [self.arrayImage addObject:dic[@"img"]];
                 [self.arrayID addObject:dic[@"id"]];
                 [self.arrayCount addObject:dic[@"counts"]];
             }
+            [self.tableView reloadData];
+        }else{
+            
         }
-          [self.tableView reloadData];
+        
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         
     }];

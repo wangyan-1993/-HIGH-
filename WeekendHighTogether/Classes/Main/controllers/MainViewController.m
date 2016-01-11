@@ -194,6 +194,10 @@
 //分类列表
 - (void)activityButtonAction:(UIButton *)btn{
     ClassifyViewController *classifyVC = [[ClassifyViewController alloc]init];
+    classifyVC.classifyListType = (NSInteger)btn.tag - 100 + 1;
+    
+    
+    
     [self.navigationController pushViewController:classifyVC animated:YES];
 }
 //精选活动

@@ -76,6 +76,7 @@
 //上拉
 - (void)pullingTableViewDidStartLoading:(PullingRefreshTableView *)tableView{
      _pageCount += 1;
+    self.refreshing = NO;
     [self performSelector:@selector(loadData) withObject:nil afterDelay:1.0];
    
 }
@@ -95,14 +96,24 @@
         
         NSString *status = dic[@"status"];
         NSInteger code = [dic[@"code"] integerValue];
+        
         if ([status isEqualToString:@"success"] && code == 0) {
             NSArray *array = dic[@"success"][@"acData"];
+            if (self.refreshing) {
+                if (self.arrayModel.count > 0) {
+                    [self.arrayModel removeAllObjects];
+                }
+            }
+            
             for (NSDictionary *dic in array) {
             GoodActivityModel *model = [[GoodActivityModel alloc] initWithDictionary:dic];
             [self.arrayModel addObject:model];
         }
-    }
-         [self.tableView reloadData];
+       [self.tableView reloadData];
+        }else{
+            
+        }
+        
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
       
     }];

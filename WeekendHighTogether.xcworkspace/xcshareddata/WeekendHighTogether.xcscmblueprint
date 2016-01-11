@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "F7992A496E9B289AA02CC02FCC13077ABD9EC048",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "D9356A042CDA2547EFDDDE759F9118640F71F77C" : 0,
+    "F7992A496E9B289AA02CC02FCC13077ABD9EC048" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "49E349FD-CFFB-4E97-8255-748B5C023DAB",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "D9356A042CDA2547EFDDDE759F9118640F71F77C" : "..\/VOSegmentedControlDemo",
+    "F7992A496E9B289AA02CC02FCC13077ABD9EC048" : "WeekendHighTogether\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "WeekendHighTogether",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "WeekendHighTogether.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:pozi119\/VOSegmentedControlDemo.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "D9356A042CDA2547EFDDDE759F9118640F71F77C"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:wangyan-1993\/-HIGH-.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "F7992A496E9B289AA02CC02FCC13077ABD9EC048"
+    }
+  ]
+}

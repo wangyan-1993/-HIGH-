@@ -25,6 +25,7 @@
 - (void)awakeFromNib {
     // Initialization code
     self.frame = CGRectMake(0, 0, kWidth, 90);
+    self.activityTitleLable.numberOfLines = 0;
 }
 
 - (void)setGoodModel:(GoodActivityModel *)goodModel{
@@ -33,7 +34,6 @@
     self.activityPriceLable.text = [NSString stringWithFormat:@"%@", goodModel.price];
     [self.loveCountButton setTitle:[NSString stringWithFormat:@"%@",goodModel.counts] forState:UIControlStateNormal];
     self.ageLable.text =  goodModel.age;
-    
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
