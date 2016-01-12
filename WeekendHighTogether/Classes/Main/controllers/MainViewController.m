@@ -194,7 +194,7 @@
 //分类列表
 - (void)activityButtonAction:(UIButton *)btn{
     ClassifyViewController *classifyVC = [[ClassifyViewController alloc]init];
-    classifyVC.classifyListType = (NSInteger)btn.tag - 100 + 1;
+    classifyVC.classifyListType = btn.tag - 100 + 1;
     
     
     

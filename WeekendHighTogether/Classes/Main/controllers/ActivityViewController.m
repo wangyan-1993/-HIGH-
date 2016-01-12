@@ -8,7 +8,6 @@
 
 #import "ActivityViewController.h"
 #import <AFNetworking/AFHTTPSessionManager.h>
-#import "MBProgressHUD.h"
 #import "ActivityView.h"
 @interface ActivityViewController ()
 
@@ -42,12 +41,11 @@
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
-    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     
     [manager GET:[NSString stringWithFormat:@"%@&id=%@", kActivityDetail, self.activityId] parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
        // WYLog(@"%@", downloadProgress);
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        
          //WYLog(@"%@", responseObject);
         //解析数据
         NSDictionary *dic = responseObject;
@@ -59,7 +57,7 @@
             self.phoneNum = successDic[@"tel"];
         }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        
         WYLog(@"error = %@", error);
     }];
 }

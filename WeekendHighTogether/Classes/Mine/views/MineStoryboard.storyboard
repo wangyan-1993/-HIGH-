@@ -8,7 +8,7 @@
         <!--设置-->
         <scene sceneID="21k-YR-7RV">
             <objects>
-                <viewController id="5A6-3I-kFj" sceneMemberID="viewController">
+                <viewController id="5A6-3I-kFj" customClass="MineViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Kin-RS-7QT"/>
                         <viewControllerLayoutGuide type="bottom" id="Cme-dk-VCt"/>

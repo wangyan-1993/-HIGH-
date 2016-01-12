@@ -8,15 +8,14 @@
         <!--发现-->
         <scene sceneID="BWq-Op-ITo">
             <objects>
-                <viewController id="pGg-pR-NGC" sceneMemberID="viewController">
+                <viewController id="pGg-pR-NGC" customClass="DiscoverViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="PSO-eZ-ckN"/>
                         <viewControllerLayoutGuide type="bottom" id="h1G-oP-SLT"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="eQZ-qb-1Sq">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.41320278202746041" green="1" blue="0.9211499733911056" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <navigationItem key="navigationItem" title="发现" id="DqZ-s9-Hem"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
@@ -31,9 +30,11 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="qd8-0x-3JX" sceneMemberID="viewController">
                     <toolbarItems/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ZfQ-dV-xI7">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="ZfQ-dV-xI7">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" red="0.066170302010000001" green="0.76882340599999999" blue="0.79435822150000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="barTintColor" red="0.05839788169" green="0.86719977859999997" blue="0.85908955340000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
