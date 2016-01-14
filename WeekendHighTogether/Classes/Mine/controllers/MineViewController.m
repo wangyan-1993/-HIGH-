@@ -10,16 +10,19 @@
 #import <SDWebImage/SDImageCache.h>
 #import <MessageUI/MessageUI.h>
 #import "ProgressHUD.h"
-#import "WeiboSDK.h"
+#import "LoginViewController.h"
 #import "AppDelegate.h"
-
-@interface MineViewController ()<UITableViewDelegate, UITableViewDataSource, MFMailComposeViewControllerDelegate, WBHttpRequestDelegate>
+#import "ShareView.h"
+@interface MineViewController ()<UITableViewDelegate, UITableViewDataSource, MFMailComposeViewControllerDelegate>
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) UIButton *headImageBtn;
 @property (nonatomic, strong) NSArray *imageArray;
 @property (nonatomic, strong) NSMutableArray *titleArray;
 @property (nonatomic, strong) UILabel *nikeNameLabel;
-@property (nonatomic, strong) UIView *shareView;
+@property (nonatomic, strong) ShareView *shareView;
+
+//@property (nonatomic, strong) UIView *shareView;
+//@property (nonatomic, strong) UIView *blackView;
 @end
 
 @implementation MineViewController
@@ -32,7 +35,7 @@
     [self setHeaderView];
     self.navigationController.navigationBar.barTintColor = mainColor;
     self.imageArray = @[@"trash", @"man", @"heart", @"chat", @"mobile"];
-    self.titleArray = [NSMutableArray arrayWithObjects:@"清除缓存", @"用户反馈", @"分享给好友", @"给我评分", @"当前版本", nil];
+    self.titleArray = [NSMutableArray arrayWithObjects:@"清除缓存", @"用户反馈", @"分享给好友", @"给我评分", @"当前版本 1.0", nil];
     
     
 }
@@ -92,10 +95,7 @@
             break;
         case 3:
              {
-                 NSString *str = [NSString stringWithFormat:
-                                  
-                                  @"itms-apps://itunes.apple.com/app"];
-                 
+                 NSString *str = [NSString stringWithFormat:@"itms-apps://itunes.apple.com/app"];
                  [[UIApplication sharedApplication] openURL:[NSURL URLWithString:str]];
              }
             break;
@@ -132,7 +132,7 @@
 }
 
 - (void)login{
-    
+
 }
 
 - (void)checkAppVersion{
@@ -190,65 +190,7 @@
 }
 
 - (void)share{
-  UIWindow *window = [[UIApplication sharedApplication].delegate window];
-    self.shareView = [[UIView alloc]initWithFrame:CGRectMake(0, kHeigth - 200, kWidth, 200)];
-        self.shareView.backgroundColor = [UIColor grayColor];
-    [window addSubview:self.shareView];
-    
-    
-    
-    [UIView animateWithDuration:1.0 animations:^{
-        //微博
-        UIButton *weiboBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        weiboBtn.frame = CGRectMake(20, 40, 76, 76);
-        [weiboBtn setImage:[UIImage imageNamed:@"share_weibo"] forState:UIControlStateNormal];
-        [weiboBtn addTarget:self action:@selector(weiboShare) forControlEvents:UIControlEventTouchUpInside];
-        [self.shareView addSubview:weiboBtn];
-        //朋友
-        UIButton *friendBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        friendBtn.frame = CGRectMake(110, 40, 76, 76);
-        [friendBtn setImage:[UIImage imageNamed:@"icon_weixin"] forState:UIControlStateNormal];
-        [self.shareView addSubview:friendBtn];
-        
-        
-        //朋友圈
-        UIButton *circleBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        circleBtn.frame = CGRectMake(200, 40, 76, 76);
-        [circleBtn setImage:[UIImage imageNamed:@"icon_weixin"] forState:UIControlStateNormal];
-        [self.shareView addSubview:circleBtn];
-        
-        //取消按钮
-        UIButton *removeBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        removeBtn.frame = CGRectMake(20, 100, kWidth - 40, 44);
-        [removeBtn setTitle:@"取消" forState:UIControlStateNormal];
-        [removeBtn addTarget:self action:@selector(cancel) forControlEvents:UIControlEventTouchUpInside];
-        [self.shareView addSubview:removeBtn];
-        
-
-    }];
-    AppDelegate *myDelegate =(AppDelegate*)[[UIApplication sharedApplication] delegate];
-    [WeiboSDK logOutWithToken:myDelegate.wbtoken delegate:self withTag:@"user1"];
-    
-}
-- (void)cancel{
-    self.shareView.hidden = YES;
-}
-- (void)weiboShare{
-    self.shareView.hidden = YES;
-    AppDelegate *myDelegate =(AppDelegate*)[[UIApplication sharedApplication] delegate];
-    WBAuthorizeRequest *request = [WBAuthorizeRequest request];
-    request.redirectURI = kRedirectURI;
-    request.scope = @"all";
-    
-    WBSendMessageToWeiboRequest *requestSend = [WBSendMessageToWeiboRequest requestWithMessage:[self messageToShare]authInfo:request access_token:myDelegate.wbtoken];
-    [WeiboSDK sendRequest:requestSend];
-
-}
-
-- (WBMessageObject *)messageToShare{
-    WBMessageObject *message = [WBMessageObject message];
-    message.text = @"啦啦啦啦啦啦啦啦啦啦啦啦";
-    return message;
+    self.shareView = [[ShareView alloc]init];
 }
 #pragma mark---懒加载
 - (UITableView *)tableView{
