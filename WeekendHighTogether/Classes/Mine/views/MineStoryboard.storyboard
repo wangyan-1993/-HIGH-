@@ -16,7 +16,6 @@
                     <view key="view" contentMode="scaleToFill" id="qYr-Mf-C7A">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="0.57755655064930966" blue="0.6441240417678844" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <navigationItem key="navigationItem" title="设置" id="Khj-jN-v8m"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>

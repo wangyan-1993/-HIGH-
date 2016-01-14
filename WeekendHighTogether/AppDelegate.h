@@ -13,5 +13,11 @@
 @property (strong, nonatomic) UIWindow *window;
 
 @property(nonatomic, strong) UITabBarController *tabBarVC;
+@property(nonatomic, copy) NSString *wbtoken;
+@property (strong, nonatomic) NSString *wbRefreshToken;
+@property (strong, nonatomic) NSString *wbCurrentUserID;
+
+
+
 @end
 

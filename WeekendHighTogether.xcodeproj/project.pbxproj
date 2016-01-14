@@ -29,6 +29,7 @@
 		7A24D13F1C3E4CA9007CE522 /* HWTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A24D13E1C3E4CA9007CE522 /* HWTools.m */; };
 		7A24D1411C3E5782007CE522 /* File1 in Resources */ = {isa = PBXBuildFile; fileRef = 7A24D1401C3E5782007CE522 /* File1 */; };
 		7A24D1441C3E5B1E007CE522 /* UIView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A24D1431C3E5B1E007CE522 /* UIView+Extension.m */; };
+		7A58AA381C462BF000EA35D8 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A58AA371C462BF000EA35D8 /* MessageUI.framework */; };
 		7A815B8A1C447AD300FEA46B /* VOContentLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A815B831C447AD300FEA46B /* VOContentLayer.m */; };
 		7A815B8B1C447AD300FEA46B /* VOIndicatorAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A815B851C447AD300FEA46B /* VOIndicatorAnimation.m */; };
 		7A815B8C1C447AD300FEA46B /* VOSegment.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A815B871C447AD300FEA46B /* VOSegment.m */; };
@@ -118,6 +119,7 @@
 		7A24D1401C3E5782007CE522 /* File1 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = File1; sourceTree = "<group>"; };
 		7A24D1421C3E5B1E007CE522 /* UIView+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIView+Extension.h"; path = "WeekendHighTogether/Library/UIView+Extension.h"; sourceTree = SOURCE_ROOT; };
 		7A24D1431C3E5B1E007CE522 /* UIView+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+Extension.m"; path = "WeekendHighTogether/Library/UIView+Extension.m"; sourceTree = SOURCE_ROOT; };
+		7A58AA371C462BF000EA35D8 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		7A815B821C447AD300FEA46B /* VOContentLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VOContentLayer.h; sourceTree = "<group>"; };
 		7A815B831C447AD300FEA46B /* VOContentLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VOContentLayer.m; sourceTree = "<group>"; };
 		7A815B841C447AD300FEA46B /* VOIndicatorAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VOIndicatorAnimation.h; sourceTree = "<group>"; };
@@ -194,6 +196,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7A58AA381C462BF000EA35D8 /* MessageUI.framework in Frameworks */,
 				7A815C571C45285800FEA46B /* libsqlite3.tbd in Frameworks */,
 				7A815C551C45284600FEA46B /* libz.tbd in Frameworks */,
 				7A815C531C45283D00FEA46B /* CoreGraphics.framework in Frameworks */,
@@ -497,6 +500,7 @@
 		BF2B6CC4C19E3B785303BD91 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7A58AA371C462BF000EA35D8 /* MessageUI.framework */,
 				7A815C561C45285800FEA46B /* libsqlite3.tbd */,
 				7A815C541C45284600FEA46B /* libz.tbd */,
 				7A815C521C45283D00FEA46B /* CoreGraphics.framework */,
