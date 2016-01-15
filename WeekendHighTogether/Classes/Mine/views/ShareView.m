@@ -130,15 +130,16 @@
 
 - (WBMessageObject *)messageToShare{
     WBMessageObject *message = [WBMessageObject message];
-    WBWebpageObject *webpage = [WBWebpageObject object];
-    webpage.objectID = @"identifier1";
-    webpage.title = NSLocalizedString(@"周末HIGH起来", nil);
-    webpage.description = [NSString stringWithFormat:NSLocalizedString(@"周末HIGH起来", nil), [[NSDate date] timeIntervalSince1970]];
-    webpage.thumbnailData = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"share_weibo" ofType:@"png"]];
-    webpage.webpageUrl = @"http://www.baidu.com";
-    message.mediaObject = webpage;
+//    WBWebpageObject *webpage = [WBWebpageObject object];
+//    webpage.objectID = @"identifier1";
+//    webpage.title = NSLocalizedString(@"周末HIGH起来", nil);
+//    webpage.description = [NSString stringWithFormat:NSLocalizedString(@"周末HIGH起来", nil), [[NSDate date] timeIntervalSince1970]];
+//    webpage.thumbnailData = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"share_weibo" ofType:@"png"]];
+//    webpage.webpageUrl = @"http://www.baidu.com";
+//    message.mediaObject = webpage;
     WBImageObject *image = [WBImageObject object];
-    
+    image.imageData = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"002" ofType:@"jpg"]];
+    message.imageObject = image;
     return message;
 }
 //朋友
@@ -178,7 +179,7 @@
 }
 //朋友圈
 - (void)circleShare{
-    [self removeView];    
+    [self removeView];
     
     WXMediaMessage *message = [WXMediaMessage message];
     message.title = @"跟我一起来百度 周末HIGH起来";
@@ -191,8 +192,6 @@
     req.bText = NO;
     req.scene = WXSceneTimeline;
     [WXApi sendReq:req];
-    
-    
 }
 
 

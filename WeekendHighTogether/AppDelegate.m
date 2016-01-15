@@ -12,6 +12,7 @@
 #import "MineViewController.h"
 #import "WeiboSDK.h"
 #import "WXApi.h"
+#import <BmobSDK/Bmob.h>
 @interface AppDelegate ()<WeiboSDKDelegate, WXApiDelegate>
 
 @end
@@ -25,7 +26,8 @@
     [WXApi registerApp:kWeixinAppId];
     [WeiboSDK enableDebugMode:YES];
     [WeiboSDK registerApp:kAppKey];
-    
+    //注册BMOB
+    [Bmob registerWithAppKey:kBmobAppKey];
     
     //UITabBarController
     self.tabBarVC = [[UITabBarController alloc]init];

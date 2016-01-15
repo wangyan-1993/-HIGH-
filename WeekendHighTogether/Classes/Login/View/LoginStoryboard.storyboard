@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Jog-fs-pKv">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+    </dependencies>
+    <scenes>
+        <!--Login View Controller-->
+        <scene sceneID="2vM-1p-Iqe">
+            <objects>
+                <viewController id="Mt6-5j-9GI" customClass="LoginViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="d8d-wD-W2m"/>
+                        <viewControllerLayoutGuide type="bottom" id="LQt-mP-ozg"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="jwE-1c-XTR">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Qc-Vu-Ive">
+                                <rect key="frame" x="119" y="153" width="148" height="52"/>
+                                <color key="backgroundColor" red="0.05839788169" green="0.86719977859999997" blue="0.85908955340000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="增"/>
+                                <connections>
+                                    <action selector="add:" destination="Mt6-5j-9GI" eventType="touchUpInside" id="28b-bi-19Q"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5jV-A4-5zG">
+                                <rect key="frame" x="119" y="242" width="148" height="55"/>
+                                <color key="backgroundColor" red="0.05839788169" green="0.86719977859999997" blue="0.85908955340000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="删"/>
+                                <connections>
+                                    <action selector="delete:" destination="Mt6-5j-9GI" eventType="touchUpInside" id="umE-cV-ds8"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yRY-ou-msW">
+                                <rect key="frame" x="119" y="336" width="148" height="53"/>
+                                <color key="backgroundColor" red="0.05839788169" green="0.86719977859999997" blue="0.85908955340000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="改"/>
+                                <connections>
+                                    <action selector="change:" destination="Mt6-5j-9GI" eventType="touchUpInside" id="svE-Lf-Hyh"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MUH-nh-LHe">
+                                <rect key="frame" x="119" y="428" width="148" height="51"/>
+                                <color key="backgroundColor" red="0.05839788169" green="0.86719977859999997" blue="0.85908955340000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="查"/>
+                                <connections>
+                                    <action selector="find:" destination="Mt6-5j-9GI" eventType="touchUpInside" id="lAS-5Z-zDb"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="avx-uu-VQC"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3XD-oG-hoq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1108.5" y="417.5"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="EgR-78-Y3Z">
+            <objects>
+                <navigationController storyboardIdentifier="LoginNav" automaticallyAdjustsScrollViewInsets="NO" id="Jog-fs-pKv" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="mWS-wg-KE7">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Mt6-5j-9GI" kind="relationship" relationship="rootViewController" id="IHV-jd-l5D"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AS2-Yu-eD4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="584.5" y="417.5"/>
+        </scene>
+    </scenes>
+</document>

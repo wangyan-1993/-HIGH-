@@ -44,4 +44,6 @@ typedef NS_ENUM(NSInteger, ClassifyListType) {
 #define kWeixinAppId @"wx9864cffa76e0ac88"
 #define kWeixinAppSecret @"1a273c7850baeff5baec7be6cd94daf9"
 
+#define kBmobAppKey @"e1eee030456cb5bcf9ed3ac7093f7580"
+
 #endif /* WHTHeader_h */

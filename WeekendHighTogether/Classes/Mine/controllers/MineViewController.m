@@ -10,9 +10,10 @@
 #import <SDWebImage/SDImageCache.h>
 #import <MessageUI/MessageUI.h>
 #import "ProgressHUD.h"
-#import "LoginViewController.h"
+
 #import "AppDelegate.h"
 #import "ShareView.h"
+#import "LoginViewController.h"
 @interface MineViewController ()<UITableViewDelegate, UITableViewDataSource, MFMailComposeViewControllerDelegate>
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) UIButton *headImageBtn;
@@ -133,6 +134,9 @@
 
 - (void)login{
 
+    UIStoryboard *loginSB = [UIStoryboard storyboardWithName:@"LoginStoryboard" bundle:nil];
+    UINavigationController *nav = [loginSB instantiateViewControllerWithIdentifier:@"LoginNav"];
+    [self.navigationController presentViewController:nav animated:YES completion:nil];
 }
 
 - (void)checkAppVersion{
