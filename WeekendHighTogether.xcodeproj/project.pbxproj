@@ -31,6 +31,7 @@
 		7A24D1441C3E5B1E007CE522 /* UIView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A24D1431C3E5B1E007CE522 /* UIView+Extension.m */; };
 		7A28BC371C4790C10090CE1D /* 002.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7A28BC361C4790C10090CE1D /* 002.jpg */; };
 		7A58AA381C462BF000EA35D8 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A58AA371C462BF000EA35D8 /* MessageUI.framework */; };
+		7A7101E81C852CD0004A3842 /* City.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A7101E71C852CD0004A3842 /* City.m */; };
 		7A815B8A1C447AD300FEA46B /* VOContentLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A815B831C447AD300FEA46B /* VOContentLayer.m */; };
 		7A815B8B1C447AD300FEA46B /* VOIndicatorAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A815B851C447AD300FEA46B /* VOIndicatorAnimation.m */; };
 		7A815B8C1C447AD300FEA46B /* VOSegment.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A815B871C447AD300FEA46B /* VOSegment.m */; };
@@ -137,6 +138,8 @@
 		7A24D1431C3E5B1E007CE522 /* UIView+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+Extension.m"; path = "WeekendHighTogether/Library/UIView+Extension.m"; sourceTree = SOURCE_ROOT; };
 		7A28BC361C4790C10090CE1D /* 002.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 002.jpg; sourceTree = "<group>"; };
 		7A58AA371C462BF000EA35D8 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		7A7101E61C852CD0004A3842 /* City.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = City.h; sourceTree = "<group>"; };
+		7A7101E71C852CD0004A3842 /* City.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = City.m; sourceTree = "<group>"; };
 		7A815B821C447AD300FEA46B /* VOContentLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VOContentLayer.h; sourceTree = "<group>"; };
 		7A815B831C447AD300FEA46B /* VOContentLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VOContentLayer.m; sourceTree = "<group>"; };
 		7A815B841C447AD300FEA46B /* VOIndicatorAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VOIndicatorAnimation.h; sourceTree = "<group>"; };
@@ -278,13 +281,13 @@
 		7A815B811C447AD300FEA46B /* VOSegmentedControl */ = {
 			isa = PBXGroup;
 			children = (
+				7A815B881C447AD300FEA46B /* VOSegmentedControl.h */,
 				7A815B821C447AD300FEA46B /* VOContentLayer.h */,
 				7A815B831C447AD300FEA46B /* VOContentLayer.m */,
 				7A815B841C447AD300FEA46B /* VOIndicatorAnimation.h */,
 				7A815B851C447AD300FEA46B /* VOIndicatorAnimation.m */,
 				7A815B861C447AD300FEA46B /* VOSegment.h */,
 				7A815B871C447AD300FEA46B /* VOSegment.m */,
-				7A815B881C447AD300FEA46B /* VOSegmentedControl.h */,
 				7A815B891C447AD300FEA46B /* VOSegmentedControl.m */,
 			);
 			path = VOSegmentedControl;
@@ -443,6 +446,8 @@
 				7ADC30571C43A80900CB3B77 /* typeud21.plist */,
 				7A9708CB1C3BA0DF00C1C566 /* File */,
 				7A24D1401C3E5782007CE522 /* File1 */,
+				7A7101E61C852CD0004A3842 /* City.h */,
+				7A7101E71C852CD0004A3842 /* City.m */,
 			);
 			path = models;
 			sourceTree = "<group>";
@@ -779,6 +784,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7A7101E81C852CD0004A3842 /* City.m in Sources */,
 				7A24D1441C3E5B1E007CE522 /* UIView+Extension.m in Sources */,
 				7A24D13F1C3E4CA9007CE522 /* HWTools.m in Sources */,
 				7AAD464A1C474DFB007A1888 /* ShareViewController.m in Sources */,

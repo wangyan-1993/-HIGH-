@@ -185,7 +185,8 @@
 #pragma mark---button method
 - (void)selectCityAction:(UIBarButtonItem *)barBtn{
     SelectCityViewController *selectCityVC = [[SelectCityViewController alloc]init];
-    [self.navigationController presentViewController:selectCityVC animated:YES completion:nil];
+    UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:selectCityVC];
+    [self.navigationController presentViewController:nav animated:YES completion:nil];
 }
 - (void)searchActivityAction:(UIBarButtonItem *)barBtn{
     SearchViewController *searchVC = [[SearchViewController alloc]init];

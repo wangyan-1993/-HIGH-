@@ -13,8 +13,12 @@
 #import "WeiboSDK.h"
 #import "WXApi.h"
 #import <BmobSDK/Bmob.h>
-@interface AppDelegate ()<WeiboSDKDelegate, WXApiDelegate>
-
+#import <CoreLocation/CoreLocation.h>
+@interface AppDelegate ()<WeiboSDKDelegate, WXApiDelegate,CLLocationManagerDelegate >
+{
+    CLLocationManager *_locationManager;
+    CLGeocoder *_geocoder;
+}
 @end
 
 @implementation AppDelegate
@@ -28,6 +32,26 @@
     [WeiboSDK registerApp:kAppKey];
     //注册BMOB
     [Bmob registerWithAppKey:kBmobAppKey];
+    
+    _locationManager = [[CLLocationManager alloc]init];
+    _geocoder = [[CLGeocoder alloc] init];
+    if (![CLLocationManager locationServicesEnabled]) {
+        NSLog(@"定位服务尚未打开");
+    }
+    if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusNotDetermined) {
+        [_locationManager requestWhenInUseAuthorization];
+    } else if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorizedWhenInUse) {
+        //设置代理
+        _locationManager.delegate = self;
+        //设置定位精度,精度越高越耗电
+        _locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+        //定位频率，每隔多少米定位一次
+        CLLocationDistance distance = 10.0;
+        _locationManager.distanceFilter = distance;
+        //启动跟踪定位
+        [_locationManager startUpdatingLocation];
+    }
+
     
     //UITabBarController
     self.tabBarVC = [[UITabBarController alloc]init];
@@ -65,6 +89,23 @@
     [self.window makeKeyAndVisible];
     return YES;
 }
+#pragma mark---CLLocationManagerDelegate
+- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations{
+    //取出第一个位置
+    CLLocation *location = [locations firstObject];
+    //获取坐标
+    CLLocationCoordinate2D coordinate = location.coordinate;
+    WYLog(@"经度：%f  维度：%f 海拔：%f 航向：%f行走速度：%f", coordinate.longitude, coordinate.latitude, location.altitude,location.course,location.speed);
+    //在获取到用户位置（经纬度）后，通过逆地理编码将经纬度转化为实际的地名、街道等信息
+    [_geocoder reverseGeocodeLocation:location completionHandler:^(NSArray<CLPlacemark *> * _Nullable placemarks, NSError * _Nullable error) {
+        CLPlacemark *placeMark = [placemarks firstObject];
+        WYLog(@"%@", placeMark.addressDictionary);
+    }];
+    //如果不需要实时定位，使用完即使关闭定位服务
+    [_locationManager stopUpdatingLocation];
+}
+
+
 #pragma mark---weibo share
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation{
     return [WeiboSDK handleOpenURL:url delegate:self];

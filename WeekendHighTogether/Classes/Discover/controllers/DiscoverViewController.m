@@ -42,7 +42,7 @@
     WYLog(@"%@", downloadProgress);
     [ProgressHUD showSuccess:@"Success"];
 } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-    WYLog(@"%@", responseObject);
+   // WYLog(@"%@", responseObject);
     NSDictionary *dict = responseObject;
     NSString *code = dict[@"code"];
     NSString *status = dict[@"status"];
