@@ -32,6 +32,8 @@
 		7A28BC371C4790C10090CE1D /* 002.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7A28BC361C4790C10090CE1D /* 002.jpg */; };
 		7A58AA381C462BF000EA35D8 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A58AA371C462BF000EA35D8 /* MessageUI.framework */; };
 		7A7101E81C852CD0004A3842 /* City.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A7101E71C852CD0004A3842 /* City.m */; };
+		7A7101EA1C859E06004A3842 /* select.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7A7101E91C859E06004A3842 /* select.plist */; };
+		7A7101ED1C85BBC8004A3842 /* DataBaseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A7101EC1C85BBC8004A3842 /* DataBaseManager.m */; };
 		7A815B8A1C447AD300FEA46B /* VOContentLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A815B831C447AD300FEA46B /* VOContentLayer.m */; };
 		7A815B8B1C447AD300FEA46B /* VOIndicatorAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A815B851C447AD300FEA46B /* VOIndicatorAnimation.m */; };
 		7A815B8C1C447AD300FEA46B /* VOSegment.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A815B871C447AD300FEA46B /* VOSegment.m */; };
@@ -77,6 +79,7 @@
 		7A9BC25C1C48E9D800BC44FF /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A9BC25B1C48E9D800BC44FF /* MediaPlayer.framework */; };
 		7A9BC2621C48ED1A00BC44FF /* LoginStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A9BC2611C48ED1A00BC44FF /* LoginStoryboard.storyboard */; };
 		7A9BC2651C48ED3F00BC44FF /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A9BC2641C48ED3F00BC44FF /* LoginViewController.m */; };
+		7A9C8F571C86FB8E00D1B6AB /* RegisteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A9C8F561C86FB8E00D1B6AB /* RegisteViewController.m */; };
 		7AAD46201C472353007A1888 /* libWeiboSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AAD46141C472353007A1888 /* libWeiboSDK.a */; };
 		7AAD46211C472353007A1888 /* WeiboSDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 7AAD461D1C472353007A1888 /* WeiboSDK.bundle */; };
 		7AAD46471C4738C3007A1888 /* ShareView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AAD46461C4738C3007A1888 /* ShareView.m */; };
@@ -140,6 +143,9 @@
 		7A58AA371C462BF000EA35D8 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		7A7101E61C852CD0004A3842 /* City.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = City.h; sourceTree = "<group>"; };
 		7A7101E71C852CD0004A3842 /* City.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = City.m; sourceTree = "<group>"; };
+		7A7101E91C859E06004A3842 /* select.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = select.plist; sourceTree = "<group>"; };
+		7A7101EB1C85BBC8004A3842 /* DataBaseManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataBaseManager.h; sourceTree = "<group>"; };
+		7A7101EC1C85BBC8004A3842 /* DataBaseManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataBaseManager.m; sourceTree = "<group>"; };
 		7A815B821C447AD300FEA46B /* VOContentLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VOContentLayer.h; sourceTree = "<group>"; };
 		7A815B831C447AD300FEA46B /* VOContentLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VOContentLayer.m; sourceTree = "<group>"; };
 		7A815B841C447AD300FEA46B /* VOIndicatorAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VOIndicatorAnimation.h; sourceTree = "<group>"; };
@@ -201,6 +207,8 @@
 		7A9BC2611C48ED1A00BC44FF /* LoginStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LoginStoryboard.storyboard; sourceTree = "<group>"; };
 		7A9BC2631C48ED3F00BC44FF /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		7A9BC2641C48ED3F00BC44FF /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		7A9C8F551C86FB8E00D1B6AB /* RegisteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisteViewController.h; sourceTree = "<group>"; };
+		7A9C8F561C86FB8E00D1B6AB /* RegisteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisteViewController.m; sourceTree = "<group>"; };
 		7AAD46141C472353007A1888 /* libWeiboSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeiboSDK.a; sourceTree = "<group>"; };
 		7AAD46151C472353007A1888 /* WBHttpRequest+WeiboGame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "WBHttpRequest+WeiboGame.h"; sourceTree = "<group>"; };
 		7AAD46161C472353007A1888 /* WBHttpRequest+WeiboShare.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "WBHttpRequest+WeiboShare.h"; sourceTree = "<group>"; };
@@ -448,6 +456,8 @@
 				7A24D1401C3E5782007CE522 /* File1 */,
 				7A7101E61C852CD0004A3842 /* City.h */,
 				7A7101E71C852CD0004A3842 /* City.m */,
+				7A7101EB1C85BBC8004A3842 /* DataBaseManager.h */,
+				7A7101EC1C85BBC8004A3842 /* DataBaseManager.m */,
 			);
 			path = models;
 			sourceTree = "<group>";
@@ -469,6 +479,7 @@
 				7A072A4A1C3FA3BA00A25DBC /* GoodActivityTableViewCell.h */,
 				7A072A4B1C3FA3BA00A25DBC /* GoodActivityTableViewCell.m */,
 				7A072A4C1C3FA3BA00A25DBC /* GoodActivityTableViewCell.xib */,
+				7A7101E91C859E06004A3842 /* select.plist */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -553,6 +564,8 @@
 			children = (
 				7A9BC2631C48ED3F00BC44FF /* LoginViewController.h */,
 				7A9BC2641C48ED3F00BC44FF /* LoginViewController.m */,
+				7A9C8F551C86FB8E00D1B6AB /* RegisteViewController.h */,
+				7A9C8F561C86FB8E00D1B6AB /* RegisteViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -721,6 +734,7 @@
 				7A072A531C3FC09B00A25DBC /* GoodActivityList.plist in Resources */,
 				7A084A801C40EC0F009EDE62 /* HotActivityTableViewCell.xib in Resources */,
 				7ADC30521C43A7F600CB3B77 /* typeid22.plist in Resources */,
+				7A7101EA1C859E06004A3842 /* select.plist in Resources */,
 				7A24D1411C3E5782007CE522 /* File1 in Resources */,
 				7ADC30581C43A80900CB3B77 /* typeud21.plist in Resources */,
 				7A072A441C3F9E4000A25DBC /* blueArrow.png in Resources */,
@@ -784,10 +798,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7A9C8F571C86FB8E00D1B6AB /* RegisteViewController.m in Sources */,
 				7A7101E81C852CD0004A3842 /* City.m in Sources */,
 				7A24D1441C3E5B1E007CE522 /* UIView+Extension.m in Sources */,
 				7A24D13F1C3E4CA9007CE522 /* HWTools.m in Sources */,
 				7AAD464A1C474DFB007A1888 /* ShareViewController.m in Sources */,
+				7A7101ED1C85BBC8004A3842 /* DataBaseManager.m in Sources */,
 				7A1437DC1C3CBFE1007FF822 /* ClassifyViewController.m in Sources */,
 				7A24D1371C3E10E0007CE522 /* ActivityView.m in Sources */,
 				7A1437E21C3CC06D007FF822 /* HotActivityViewController.m in Sources */,

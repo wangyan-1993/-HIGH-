@@ -25,17 +25,20 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.tabBarController.tabBar.hidden = YES;
-    [self showBackBtn];
+    [self showBackBtnWithImage:@"back"];
     
     
 }
 
 #pragma mark ------ custom method
 - (void)getModel{
+    DataBaseManager *dbManager = [DataBaseManager shareInatance];
+    City *cityModel = [dbManager selectAllCity];
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
-    
-    [manager GET:[NSString stringWithFormat:@"%@&id=%@", kActivityTheme, self.themeid] parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
+    NSNumber *lat = [[NSUserDefaults standardUserDefaults] valueForKey:@"lat"];
+    NSNumber *lng = [[NSUserDefaults standardUserDefaults] valueForKey:@"lng"];
+    [manager GET:[NSString stringWithFormat:@"%@&id=%@&cityid=%ld&lat=%@&lng=%@", kActivityTheme, self.themeid, [cityModel.cityID integerValue], lat, lng] parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
          WYLog(@"%@", downloadProgress);
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         NSDictionary *dic = responseObject;

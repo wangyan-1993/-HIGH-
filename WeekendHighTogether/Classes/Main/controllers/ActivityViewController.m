@@ -23,7 +23,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.title = @"活动详情";
-    [self showBackBtn];
+    [self showBackBtnWithImage:@"back"];
     //隐藏tabBar
     self.tabBarController.tabBar.hidden = YES;
     
@@ -41,8 +41,9 @@
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
-    
-    [manager GET:[NSString stringWithFormat:@"%@&id=%@", kActivityDetail, self.activityId] parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
+    NSNumber *lat = [[NSUserDefaults standardUserDefaults] valueForKey:@"lat"];
+    NSNumber *lng = [[NSUserDefaults standardUserDefaults] valueForKey:@"lng"];
+    [manager GET:[NSString stringWithFormat:@"%@&id=%@&lat=%@&lng=%@", kActivityDetail, self.activityId, lat, lng] parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
        // WYLog(@"%@", downloadProgress);
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         

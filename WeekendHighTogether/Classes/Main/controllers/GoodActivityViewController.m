@@ -28,7 +28,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.title = @"精选活动";
-    [self showBackBtn];
+    [self showBackBtnWithImage:@"back"];
     [self.tableView registerNib:[UINib nibWithNibName:@"GoodActivityTableViewCell" bundle:nil] forCellReuseIdentifier:@"cell"];
     //    [self.tableView setHeaderOnly:YES];          //只有上拉刷新
     //    [self.tableView setFooterOnly:YES];          //只有下拉刷新
@@ -87,9 +87,13 @@
 
 //加载数据
 - (void)loadData{
+    DataBaseManager *dbManager = [DataBaseManager shareInatance];
+    City *cityModel = [dbManager selectAllCity];
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
-    [manager GET:[NSString stringWithFormat:@"%@&page=%ld", kGoodActivity, _pageCount] parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
+    NSNumber *lat = [[NSUserDefaults standardUserDefaults] valueForKey:@"lat"];
+    NSNumber *lng = [[NSUserDefaults standardUserDefaults] valueForKey:@"lng"];
+    [manager GET:[NSString stringWithFormat:@"%@&page=%ld&cityid=%ld&lat=%@&lng=%@", kGoodActivity, _pageCount, [cityModel.cityID integerValue], lat, lng] parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
        
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         NSDictionary *dic = responseObject;

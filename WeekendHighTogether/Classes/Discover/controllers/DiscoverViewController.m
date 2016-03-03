@@ -32,13 +32,18 @@
     [self.tableView registerNib:[UINib nibWithNibName:@"DiscoverTableViewCell" bundle:nil] forCellReuseIdentifier:@"discover"];
     [self.tableView launchRefreshing];
 }
-- (void)viewDidAppear:(BOOL)animated{
+- (void)viewWillAppear:(BOOL)animated{
     self.tabBarController.tabBar.hidden = NO;
+    [self loadData];
 }
 - (void)loadData{
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
-[manager GET:kDiscover parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
+    DataBaseManager *dbManager = [DataBaseManager shareInatance];
+    City *cityModel = [dbManager selectAllCity];
+    NSNumber *lat = [[NSUserDefaults standardUserDefaults] valueForKey:@"lat"];
+    NSNumber *lng = [[NSUserDefaults standardUserDefaults] valueForKey:@"lng"];
+[manager GET:[NSString stringWithFormat:@"%@&cityid=%ld&lat=%@&lng=%@", kDiscover, [cityModel.cityID integerValue], lat, lng] parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
     WYLog(@"%@", downloadProgress);
     [ProgressHUD showSuccess:@"Success"];
 } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
@@ -46,6 +51,12 @@
     NSDictionary *dict = responseObject;
     NSString *code = dict[@"code"];
     NSString *status = dict[@"status"];
+    if (self.likeArray.count > 0) {
+        [self.likeArray removeAllObjects];
+    }
+    if (self.idArray.count > 0) {
+        [self.idArray removeAllObjects];
+    }
     if ([status isEqualToString:@"success"]&& [code integerValue] == 0) {
         NSDictionary *dic = dict[@"success"];
         NSArray *array = dic[@"like"];

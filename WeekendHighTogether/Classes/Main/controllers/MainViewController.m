@@ -37,6 +37,8 @@
 //精选活动&热门专题
 @property(nonatomic, strong) UIButton *button1;
 @property(nonatomic, strong) UIButton *button2;
+@property(nonatomic, strong) UIBarButtonItem *leftBarBtn;
+@property(nonatomic, strong) UIButton *leftBtn;
 @end
 
 @implementation MainViewController
@@ -48,9 +50,23 @@
     
     
     //left
-    UIBarButtonItem *leftBarBtn = [[UIBarButtonItem alloc]initWithTitle:@"北京" style:UIBarButtonItemStylePlain target:self action:@selector(selectCityAction:)];
-    leftBarBtn.tintColor = [UIColor whiteColor];
-    self.navigationItem.leftBarButtonItem = leftBarBtn;
+    self.leftBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    self.leftBtn.frame = CGRectMake(0, 0, 70, 44);
+   
+    [self.leftBtn setImage:[UIImage imageNamed:@"btn_chengshi"] forState:UIControlStateNormal];
+    //调整btn图片的位置
+    [self.leftBtn setImageEdgeInsets:UIEdgeInsetsMake(0, self.leftBtn.frame.size.width-25, 0, 0)];
+    DataBaseManager *dbManager = [DataBaseManager shareInatance];
+    City *cityModel = [dbManager selectAllCity];
+    NSLog(@"%@", cityModel.name);
+     [self.leftBtn setTitle:cityModel.name forState:UIControlStateNormal];
+   self.leftBtn.titleLabel.font = [UIFont systemFontOfSize:16];
+
+        [self.leftBtn setTitleEdgeInsets:UIEdgeInsetsMake(0, -20, 0, 10)];
+    [self.leftBtn addTarget:self action:@selector(selectCityAction:) forControlEvents:UIControlEventTouchUpInside];
+    self.leftBarBtn = [[UIBarButtonItem alloc]initWithCustomView:self.leftBtn];
+    self.leftBarBtn.tintColor = [UIColor whiteColor];
+    self.navigationItem.leftBarButtonItem = self.leftBarBtn;
     
     //right
     UIButton *rightBtn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -73,6 +89,23 @@
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     self.tabBarController.tabBar.hidden = NO;
+    //self.leftBarBtn.title = @"";
+    DataBaseManager *dbManager = [DataBaseManager shareInatance];
+    City *cityModel = [dbManager selectAllCity];
+    NSLog(@"%@", cityModel.name);
+    [self.leftBtn setTitle:cityModel.name forState:UIControlStateNormal];
+    if (cityModel.name.length > 2) {
+        [self.leftBtn setTitleEdgeInsets:UIEdgeInsetsMake(0, -30, 0, 10)];
+    }else{
+        //调整btn标题所在的位置，距离左上右下边界的距离
+        [self.leftBtn setTitleEdgeInsets:UIEdgeInsetsMake(0, -15, 0, 10)];
+    }
+
+    [self.listArray removeAllObjects];
+    [self.adArray removeAllObjects];
+    [self.activityArray removeAllObjects];
+    [self.themeArray removeAllObjects];
+    [self requestModel];
 }
 
 #pragma mark---UITableViewDataSource
@@ -97,21 +130,6 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return self.listArray.count;
 }
-//- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-//    if (section == 0) {
-//        return 343;
-//    }
-//    return 0;
-//}
-//自定义分区头部
-//- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
-//UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, kWidth, 343)];
-//view.backgroundColor = [UIColor redColor];
-//self.tableView.tableHeaderView = view;
-
-//       return view;
-//}
-
 
 //自定义tableView头部
 - (void)configTableViewHeaderView{
@@ -238,10 +256,16 @@
 #pragma mark---网络请求
 - (void)requestModel{
 
-    
+    DataBaseManager *dbManager = [DataBaseManager shareInatance];
+    City *cityModel = [dbManager selectAllCity];
+    NSLog(@"%@", cityModel.cityID);
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
-    NSString *url = kMainDataList;
+    NSNumber *lat = [[NSUserDefaults standardUserDefaults] valueForKey:@"lat"];
+    NSNumber *lng = [[NSUserDefaults standardUserDefaults] valueForKey:@"lng"];
+
+    NSString *url = [NSString stringWithFormat:@"%@%ld&lat=%@&lng=%@", kMainDataList, (long)[cityModel.cityID integerValue], lat, lng];
+    WYLog(@"%@", url);
     [manager GET:url parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         //*****************解析数据
@@ -256,15 +280,17 @@
             NSString *cityName = dic[@"cityname"];
             //以请求回来的城市作为导航栏按钮标题
             self.navigationItem.leftBarButtonItem.title = cityName;
-            
+
             //推荐活动
             for (NSDictionary *dict in acDataArray) {
                 MainModel *model = [[MainModel alloc]initWithDictionary:dict];
+                
                 [self.activityArray addObject:model];
             }
             //推荐专题
             for (NSDictionary *dict in rcDataArray) {
                 MainModel *model = [[MainModel alloc]initWithDictionary:dict];
+                
                 [self.themeArray addObject:model];
             }
             
@@ -272,6 +298,7 @@
             [self.listArray addObject:self.themeArray];
             
             //广告
+
             for (NSDictionary *dict in adDataArray) {
                 NSDictionary *dic = @{@"url":dict[@"url"], @"id":dict[@"id"], @"type":dict[@"type"]};
                 [self.adArray addObject:dic];
@@ -290,9 +317,7 @@
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         WYLog(@"%@", error);
     }];
-    //*****************
-//    NSString *URLString = @"http://e.kumi.cn/app/v1.3/index.php?";
-//    NSDictionary *parameters = @{@"s": @"02a411494fa910f5177d82a6b0a63788", @"t": @"1451307342", @"channelid":@"appstore", @"cityid":@"1", @"lat":@"34.62172291944134", @"limit":@"30", @"lng":@"112.4149512442411", @"page":@"1"};
+   
 }
 #pragma mark---懒加载
 - (NSMutableArray *)listArray{

@@ -33,26 +33,20 @@
     //注册BMOB
     [Bmob registerWithAppKey:kBmobAppKey];
     
-    _locationManager = [[CLLocationManager alloc]init];
+    _locationManager = [[CLLocationManager alloc] init];
     _geocoder = [[CLGeocoder alloc] init];
     if (![CLLocationManager locationServicesEnabled]) {
-        NSLog(@"定位服务尚未打开");
+        WYLog(@"定位服务当前可能尚未打开，请设置打开");
     }
     if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusNotDetermined) {
         [_locationManager requestWhenInUseAuthorization];
-    } else if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorizedWhenInUse) {
-        //设置代理
+    } else if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorizedWhenInUse){
         _locationManager.delegate = self;
-        //设置定位精度,精度越高越耗电
-        _locationManager.desiredAccuracy = kCLLocationAccuracyBest;
-        //定位频率，每隔多少米定位一次
+        _locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters;
         CLLocationDistance distance = 10.0;
         _locationManager.distanceFilter = distance;
-        //启动跟踪定位
         [_locationManager startUpdatingLocation];
     }
-
-    
     //UITabBarController
     self.tabBarVC = [[UITabBarController alloc]init];
     //创建被tabBarVC管理的试图控制器
@@ -90,22 +84,50 @@
     return YES;
 }
 #pragma mark---CLLocationManagerDelegate
+//- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations{
+//    //取出第一个位置
+//    CLLocation *location = [locations lastObject];
+//    //获取坐标
+//    CLLocationCoordinate2D coordinate = location.coordinate;
+//    WYLog(@"经度：%f  维度：%f 海拔：%f 航向：%f行走速度：%f", coordinate.longitude, coordinate.latitude, location.altitude,location.course,location.speed);
+//    NSUserDefaults *users = [NSUserDefaults standardUserDefaults];
+//    [users setValue:[NSNumber numberWithDouble:coordinate.latitude] forKey:@"lat"];
+//    [users setValue:[NSNumber numberWithDouble:coordinate.longitude] forKey:@"lng"];
+//    
+//    
+//    //在获取到用户位置（经纬度）后，通过逆地理编码将经纬度转化为实际的地名、街道等信息
+//    
+//    
+//    [_geocoder reverseGeocodeLocation:location completionHandler:^(NSArray<CLPlacemark *> * _Nullable placemarks, NSError * _Nullable error) {
+//        CLPlacemark *placeMark = [placemarks firstObject];
+//        WYLog(@"%@", placeMark.addressDictionary);
+//        [[NSUserDefaults standardUserDefaults]setValue:placeMark.addressDictionary[@"City"] forKey:@"city"];
+//        //保存
+//        [users synchronize];
+//        
+//    }];
+//    //如果不需要实时定位，使用完即使关闭定位服务
+//    [_locationManager stopUpdatingLocation];
+//}
+
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations{
-    //取出第一个位置
-    CLLocation *location = [locations firstObject];
-    //获取坐标
+    CLLocation *location = [locations lastObject];
     CLLocationCoordinate2D coordinate = location.coordinate;
-    WYLog(@"经度：%f  维度：%f 海拔：%f 航向：%f行走速度：%f", coordinate.longitude, coordinate.latitude, location.altitude,location.course,location.speed);
-    //在获取到用户位置（经纬度）后，通过逆地理编码将经纬度转化为实际的地名、街道等信息
+    WYLog(@"///%f, ///%f, %f, %f, %f", coordinate.longitude, coordinate.latitude, location.altitude, location.course, location.speed);
+    //
+    NSUserDefaults *userDef = [NSUserDefaults standardUserDefaults];
+    [userDef setValue:[NSNumber numberWithDouble:coordinate.latitude] forKey:@"lat"];
+    [userDef setValue:[NSNumber numberWithDouble:coordinate.longitude] forKey:@"lng"];
+    
     [_geocoder reverseGeocodeLocation:location completionHandler:^(NSArray<CLPlacemark *> * _Nullable placemarks, NSError * _Nullable error) {
         CLPlacemark *placeMark = [placemarks firstObject];
+        [[NSUserDefaults standardUserDefaults] setValue:placeMark.addressDictionary[@"City"] forKey:@"city"];
+        [userDef synchronize];
         WYLog(@"%@", placeMark.addressDictionary);
     }];
-    //如果不需要实时定位，使用完即使关闭定位服务
     [_locationManager stopUpdatingLocation];
+    
 }
-
-
 #pragma mark---weibo share
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation{
     return [WeiboSDK handleOpenURL:url delegate:self];

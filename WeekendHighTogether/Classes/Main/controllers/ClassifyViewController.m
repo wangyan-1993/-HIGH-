@@ -47,7 +47,7 @@
     self.tabBarController.tabBar.hidden = YES;
     
     [self.tableView launchRefreshing];
-    [self showBackBtn];
+    [self showBackBtnWithImage:@"back"];
    
     [self.view addSubview:self.segctrl];
     [self.view addSubview:self.tableView];
@@ -121,10 +121,14 @@
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
     [ProgressHUD show:@"拼了老命了..."];
+    NSNumber *lat = [[NSUserDefaults standardUserDefaults] valueForKey:@"lat"];
+    NSNumber *lng = [[NSUserDefaults standardUserDefaults] valueForKey:@"lng"];
+    DataBaseManager *dbManager = [DataBaseManager shareInatance];
+    City *cityModel = [dbManager selectAllCity];
 //演出剧目
     if (self.classifyListType == ClassifyListTypeShowRepertoire) {
         //演出剧目， typeid=6
-        [manager GET:[NSString stringWithFormat:@"%@&page=%lu&typeid=%@", kClassifyList, _pageCount, @(6)] parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
+        [manager GET:[NSString stringWithFormat:@"%@&page=%lu&typeid=%@&lat=%@&lng=%@&cityid=%@", kClassifyList, _pageCount, @(6), lat, lng, cityModel.cityID] parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
             
         } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
             [ProgressHUD showSuccess:@"加载已完成"];
@@ -158,7 +162,7 @@
 //景点场馆
     if (self.classifyListType == ClassifyListTypeTouristPlace) {
         //景点场馆， typeid=23
-        [manager GET:[NSString stringWithFormat:@"%@&page=%lu&typeid=%@", kClassifyList, _pageCount, @(23)] parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
+        [manager GET:[NSString stringWithFormat:@"%@&page=%lu&typeid=%@&lat=%@&lng=%@&cityid=%@", kClassifyList, _pageCount, @(23), lat, lng, cityModel.cityID] parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
             
         } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
             [ProgressHUD showSuccess:@"加载已完成"];
@@ -194,7 +198,7 @@
 //学习益智
     if (self.classifyListType == ClassifyListTypeStudyPUZ) {
         //学习益智， typeid=22
-        [manager GET:[NSString stringWithFormat:@"%@&page=%lu&typeid=%@", kClassifyList, _pageCount, @(22)] parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
+        [manager GET:[NSString stringWithFormat:@"%@&page=%lu&typeid=%@&lat=%@&lng=%@&cityid=%@", kClassifyList, _pageCount, @(22), lat, lng, cityModel.cityID] parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
             
         } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
             [ProgressHUD showSuccess:@"加载已完成"];
@@ -227,7 +231,7 @@
 //亲子旅游
     if (self.classifyListType == ClassifyListTypeFamilyTravel) {
         //亲子旅游， typeid=21
-        [manager GET:[NSString stringWithFormat:@"%@&page=%lu&typeid=%@", kClassifyList, _pageCount, @(21)] parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
+        [manager GET:[NSString stringWithFormat:@"%@&page=%lu&typeid=%@&lat=%@&lng=%@&cityid=%@", kClassifyList, _pageCount, @(21), lat, lng, cityModel.cityID] parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
             
         } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
             [ProgressHUD showSuccess:@"加载已完成"];

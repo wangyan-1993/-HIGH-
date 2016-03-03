@@ -28,7 +28,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    [self showBackBtn];
+    [self showBackBtnWithImage:@"back"];
     self.title = @"热门专题";
     self.tableView = [[PullingRefreshTableView alloc]initWithFrame:CGRectMake(0, 0, kWidth, kHeigth - 64) pullingDelegate:self];
      [self.tableView registerNib:[UINib nibWithNibName:@"HotActivityTableViewCell" bundle:nil] forCellReuseIdentifier:@"hotcell"];
@@ -83,10 +83,25 @@
 - (void)loadData{
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
-    [manager GET:[NSString stringWithFormat:@"%@&page=%lu", kHotActivity, _pageCount] parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
+    DataBaseManager *dbManager = [DataBaseManager shareInatance];
+    City *cityModel = [dbManager selectAllCity];
+    NSNumber *lat = [[NSUserDefaults standardUserDefaults] valueForKey:@"lat"];
+    NSNumber *lng = [[NSUserDefaults standardUserDefaults] valueForKey:@"lng"];
+    [manager GET:[NSString stringWithFormat:@"%@&page=%lu&cityid=%ld&lat=%@&lng=%@", kHotActivity, _pageCount, [cityModel.cityID integerValue], lat, lng] parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         //NSLog(@"%@",responseObject);
+        if (self.arrayImage.count > 0) {
+            [self.arrayImage removeAllObjects];
+        }
+        if (self.arrayID.count > 0) {
+            [self.arrayID removeAllObjects];
+        }
+        if (self.arrayCount.count > 0) {
+            [self.arrayCount removeAllObjects];
+        }
+        
+
         NSDictionary *dic = responseObject;
         NSString *status = dic[@"status"];
         NSInteger code = [dic[@"code"] integerValue];
