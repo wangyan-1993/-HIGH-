@@ -17,7 +17,7 @@
 @property (strong, nonatomic) NSString *wbRefreshToken;
 @property (strong, nonatomic) NSString *wbCurrentUserID;
 
-
-
+@property(assign, nonatomic) BOOL isLogin;
+@property(nonatomic, copy) NSString *username;
 @end
 

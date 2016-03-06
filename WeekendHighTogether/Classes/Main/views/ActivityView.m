@@ -8,10 +8,11 @@
 
 #import "ActivityView.h"
 #import <SDWebImage/UIImageView+WebCache.h>
+
 @interface ActivityView()
 {
     CGFloat sumHeight;
-}
+   }
 
 @property (weak, nonatomic) IBOutlet UIImageView *headerImageView;
 @property (weak, nonatomic) IBOutlet UILabel *activityTitleLable;
@@ -117,6 +118,8 @@
     [self.mainScrollView addSubview:reminder];
     self.mainScrollView.contentSize = CGSizeMake(kWidth, reminder.bottom + 30);
 }
+
+
 /*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.

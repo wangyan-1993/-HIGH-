@@ -9,11 +9,16 @@
 #import "ActivityViewController.h"
 #import <AFNetworking/AFHTTPSessionManager.h>
 #import "ActivityView.h"
+#import <CoreLocation/CoreLocation.h>
+#import <MapKit/MapKit.h>
 @interface ActivityViewController ()
+{
+    CLGeocoder *_geocoder;
 
+}
 @property (strong, nonatomic) IBOutlet ActivityView *activityView;
 @property (nonatomic, copy) NSString *phoneNum;
-
+@property(nonatomic, copy) NSString *address;
 
 @end
 
@@ -32,7 +37,7 @@
     
     //打电话
     [self.activityView.makeCallBtn addTarget:self action:@selector(makeCallAction:) forControlEvents:UIControlEventTouchUpInside];
-    
+     _geocoder=[[CLGeocoder alloc]init];
     [self getModel];
 }
 #pragma mark------custom method
@@ -56,6 +61,7 @@
             NSDictionary *successDic = dic[@"success"];
             self.activityView.dataDic = successDic;
             self.phoneNum = successDic[@"tel"];
+            self.address = successDic[@"address"];
         }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         
@@ -67,8 +73,21 @@
 #pragma mark ---btn method
 //地图页面
 - (void)mapAction:(UIButton *)btn{
+    [self location];
     
 }
+- (void)location{
+    
+    [_geocoder geocodeAddressString:self.address completionHandler:^(NSArray *placemarks, NSError *error) {
+        CLPlacemark *clPlacemark=[placemarks firstObject];//获取第一个地标
+        MKPlacemark *mkplacemark=[[MKPlacemark alloc]initWithPlacemark:clPlacemark];//定位地标转化为地图的地标
+        NSDictionary *options=@{MKLaunchOptionsMapTypeKey:@(MKMapTypeStandard)};
+        MKMapItem *mapItem=[[MKMapItem alloc]initWithPlacemark:mkplacemark];
+        [mapItem openInMapsWithLaunchOptions:options];
+    }];
+    
+}
+
 
 //打电话页面
 - (void)makeCallAction:(UIButton *)btn{

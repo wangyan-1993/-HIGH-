@@ -38,7 +38,7 @@
 - (IBAction)registerBtnAction:(id)sender {
     if ([self checkOut]) {
        
-        [ProgressHUD show:@"正在为您注册"];
+        //[ProgressHUD show:@"正在为您注册"];
         BmobUser *buser =[[BmobUser alloc]init];
         [buser setUsername:self.uesrName.text];
         [buser setPassword:self.uesrCode.text];
@@ -48,6 +48,11 @@
                 WYLog(@"注册成功");
                 UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"恭喜" message:@"注册成功" preferredStyle:UIAlertControllerStyleActionSheet];
                 UIAlertAction *alertAction1 = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                    [self.navigationController popToRootViewControllerAnimated:YES];
+                    AppDelegate *delegate=(AppDelegate*)[[UIApplication sharedApplication]delegate];
+                    
+                    delegate.isLogin=YES;
+                    delegate.username = self.uesrName.text;
                     
                 }];
                 UIAlertAction *alertAction2 = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
@@ -89,6 +94,21 @@
         [alertView show];
         return NO;
     }
+    NSString *number1 = @"^1[3|4|5|7|8][0-9]\\d{8}$";
+    NSPredicate *numberPre1 = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",number1];
+    NSString *number2 = @"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}";
+    NSPredicate *numberPre2 = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",number2];
+   
+    
+    
+    if ( ![numberPre2 evaluateWithObject:self.uesrName.text] && ![numberPre1 evaluateWithObject:self.uesrName.text]) {
+        UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"温馨提示" message:@"输入的手机号或邮箱号不正确" delegate:self cancelButtonTitle:@"确定" otherButtonTitles: nil];
+        [alertView show];
+        return NO;
+
+    }
+   
+    
     
     //正则表达式
     //判断输入的手机号是否有效

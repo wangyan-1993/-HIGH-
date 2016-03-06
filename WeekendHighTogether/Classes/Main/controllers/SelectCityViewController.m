@@ -9,6 +9,7 @@
 #import "SelectCityViewController.h"
 #import "City.h"
 #import "DataBaseManager.h"
+
 @interface SelectCityViewController ()<UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>
 @property(nonatomic, strong) UICollectionView *collectionView;
 @property(nonatomic, strong) NSMutableArray *allArray;
@@ -114,6 +115,7 @@
     DataBaseManager *dbManager = [DataBaseManager shareInatance];
     [dbManager deleteCity];
     City *city = self.allArray[indexPath.row];
+    WYLog(@"%@", city.name);
     [dbManager insertIntoCity:city];
     
     [self.navigationController dismissViewControllerAnimated:YES completion:nil];

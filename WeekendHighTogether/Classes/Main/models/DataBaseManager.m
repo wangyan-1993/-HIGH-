@@ -66,7 +66,7 @@ static sqlite3 *dataBase = nil;
 //创建数据库表
 - (void)createDataBaseTable{
     //建表语句
-    NSString *sql = @"create table City (number integer primary key autoincrement, name text not null, cityID text not null)";
+    NSString *sql = @"create table Citys (name text not null, cityID text not null)";
     //执行SQL语句
     /*
      第一个参数：数据库
@@ -97,7 +97,7 @@ static sqlite3 *dataBase = nil;
     [self openDataBase];
     sqlite3_stmt *stmt = nil;
     //sql语句
-    NSString *sql = @"insert Into City (name, cityID) values (?, ?)";
+    NSString *sql = @"insert Into Citys (name, cityID) values (?, ?)";
     int result = sqlite3_prepare_v2(dataBase, [sql UTF8String], -1, &stmt, NULL);
     if (result == SQLITE_OK) {
         //绑定name
@@ -117,7 +117,7 @@ static sqlite3 *dataBase = nil;
     [self openDataBase];
     //创建一个存储sql语句的变量
     sqlite3_stmt *stmt = nil;
-    NSString *sql = @"delete from City";
+    NSString *sql = @"delete *from Citys";
     //验证sql语句
     int result = sqlite3_prepare_v2(dataBase, [sql UTF8String], -1, &stmt, NULL);
     if (result == SQLITE_OK) {
@@ -134,7 +134,7 @@ static sqlite3 *dataBase = nil;
 - (City *)selectAllCity{
     [self openDataBase];
     sqlite3_stmt *stmt = nil;
-    NSString *sql = @"select *from City";
+    NSString *sql = @"select *from Citys";
     int result = sqlite3_prepare_v2(dataBase, [sql UTF8String], -1, &stmt, NULL);
     City *city = [[City alloc]init];
     if (result == SQLITE_OK) {

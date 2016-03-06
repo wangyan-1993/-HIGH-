@@ -79,6 +79,7 @@
     self.tabBarVC.viewControllers = @[mainNav, discoverNav, mineNav];
     self.tabBarVC.tabBar.barTintColor = [UIColor whiteColor];
     self.window.rootViewController = self.tabBarVC;
+    
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     return YES;

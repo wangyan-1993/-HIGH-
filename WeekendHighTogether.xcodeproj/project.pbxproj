@@ -30,6 +30,7 @@
 		7A24D1411C3E5782007CE522 /* File1 in Resources */ = {isa = PBXBuildFile; fileRef = 7A24D1401C3E5782007CE522 /* File1 */; };
 		7A24D1441C3E5B1E007CE522 /* UIView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A24D1431C3E5B1E007CE522 /* UIView+Extension.m */; };
 		7A28BC371C4790C10090CE1D /* 002.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7A28BC361C4790C10090CE1D /* 002.jpg */; };
+		7A3A2E391C88553F00F0A0E4 /* ForgetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A3A2E381C88553F00F0A0E4 /* ForgetViewController.m */; };
 		7A58AA381C462BF000EA35D8 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A58AA371C462BF000EA35D8 /* MessageUI.framework */; };
 		7A7101E81C852CD0004A3842 /* City.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A7101E71C852CD0004A3842 /* City.m */; };
 		7A7101EA1C859E06004A3842 /* select.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7A7101E91C859E06004A3842 /* select.plist */; };
@@ -140,6 +141,8 @@
 		7A24D1421C3E5B1E007CE522 /* UIView+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIView+Extension.h"; path = "WeekendHighTogether/Library/UIView+Extension.h"; sourceTree = SOURCE_ROOT; };
 		7A24D1431C3E5B1E007CE522 /* UIView+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+Extension.m"; path = "WeekendHighTogether/Library/UIView+Extension.m"; sourceTree = SOURCE_ROOT; };
 		7A28BC361C4790C10090CE1D /* 002.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 002.jpg; sourceTree = "<group>"; };
+		7A3A2E371C88553F00F0A0E4 /* ForgetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForgetViewController.h; sourceTree = "<group>"; };
+		7A3A2E381C88553F00F0A0E4 /* ForgetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForgetViewController.m; sourceTree = "<group>"; };
 		7A58AA371C462BF000EA35D8 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		7A7101E61C852CD0004A3842 /* City.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = City.h; sourceTree = "<group>"; };
 		7A7101E71C852CD0004A3842 /* City.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = City.m; sourceTree = "<group>"; };
@@ -566,6 +569,8 @@
 				7A9BC2641C48ED3F00BC44FF /* LoginViewController.m */,
 				7A9C8F551C86FB8E00D1B6AB /* RegisteViewController.h */,
 				7A9C8F561C86FB8E00D1B6AB /* RegisteViewController.m */,
+				7A3A2E371C88553F00F0A0E4 /* ForgetViewController.h */,
+				7A3A2E381C88553F00F0A0E4 /* ForgetViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -813,6 +818,7 @@
 				7A8B03B61C3A1C3A00FFCBA0 /* AppDelegate.m in Sources */,
 				7A8B03E21C3A4E3300FFCBA0 /* DiscoverViewController.m in Sources */,
 				7A815C321C450E6400FEA46B /* DiscoverModel.m in Sources */,
+				7A3A2E391C88553F00F0A0E4 /* ForgetViewController.m in Sources */,
 				7A815BD71C449F2700FEA46B /* ProgressHUD.m in Sources */,
 				7A072A511C3FBE4500A25DBC /* GoodActivityModel.m in Sources */,
 				7A8B03E41C3A4E3300FFCBA0 /* MineViewController.m in Sources */,

@@ -26,13 +26,22 @@
     self.title = @"登录";
     self.name.clearButtonMode = UITextFieldViewModeWhileEditing;
     self.code.clearButtonMode = UITextFieldViewModeWhileEditing;
-    
+    self.code.secureTextEntry = YES;
     
 }
 - (IBAction)loginBtn:(id)sender {
     [BmobUser loginWithUsernameInBackground:self.name.text password:self.code.text block:^(BmobUser *user, NSError *error) {
         if (user) {
             WYLog(@"%@", user);
+            [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+            AppDelegate *delegate=(AppDelegate*)[[UIApplication sharedApplication]delegate];
+            
+            delegate.isLogin=YES;
+            delegate.username = self.name.text;
+        }else{
+            UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"温馨提示" message:@"用户名或密码有错误,请重试" delegate:self cancelButtonTitle:@"确定" otherButtonTitles: nil];
+            [alertView show];
+ 
         }
     }];
     

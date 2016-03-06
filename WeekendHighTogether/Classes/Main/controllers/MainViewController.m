@@ -59,6 +59,8 @@
     DataBaseManager *dbManager = [DataBaseManager shareInatance];
     City *cityModel = [dbManager selectAllCity];
     NSLog(@"%@", cityModel.name);
+    NSLog(@"%@", cityModel.cityID);
+  
      [self.leftBtn setTitle:cityModel.name forState:UIControlStateNormal];
    self.leftBtn.titleLabel.font = [UIFont systemFontOfSize:16];
 
@@ -93,6 +95,9 @@
     DataBaseManager *dbManager = [DataBaseManager shareInatance];
     City *cityModel = [dbManager selectAllCity];
     NSLog(@"%@", cityModel.name);
+    if (cityModel.name == nil) {
+        cityModel.name = @"北京";
+    }
     [self.leftBtn setTitle:cityModel.name forState:UIControlStateNormal];
     if (cityModel.name.length > 2) {
         [self.leftBtn setTitleEdgeInsets:UIEdgeInsetsMake(0, -30, 0, 10)];
@@ -101,10 +106,7 @@
         [self.leftBtn setTitleEdgeInsets:UIEdgeInsetsMake(0, -15, 0, 10)];
     }
 
-    [self.listArray removeAllObjects];
-    [self.adArray removeAllObjects];
-    [self.activityArray removeAllObjects];
-    [self.themeArray removeAllObjects];
+    
     [self requestModel];
 }
 
@@ -255,15 +257,18 @@
 }
 #pragma mark---网络请求
 - (void)requestModel{
-
+    
+    
     DataBaseManager *dbManager = [DataBaseManager shareInatance];
     City *cityModel = [dbManager selectAllCity];
-    NSLog(@"%@", cityModel.cityID);
+    NSLog(@"%@", cityModel.name);
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
     NSNumber *lat = [[NSUserDefaults standardUserDefaults] valueForKey:@"lat"];
     NSNumber *lng = [[NSUserDefaults standardUserDefaults] valueForKey:@"lng"];
-
+    if (cityModel.cityID == nil) {
+        cityModel.cityID = @"1";
+    }
     NSString *url = [NSString stringWithFormat:@"%@%ld&lat=%@&lng=%@", kMainDataList, (long)[cityModel.cityID integerValue], lat, lng];
     WYLog(@"%@", url);
     [manager GET:url parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
@@ -280,6 +285,19 @@
             NSString *cityName = dic[@"cityname"];
             //以请求回来的城市作为导航栏按钮标题
             self.navigationItem.leftBarButtonItem.title = cityName;
+
+            if (self.adArray.count > 0) {
+                [self.adArray removeAllObjects];
+            }
+            if (self.activityArray.count > 0) {
+                [self.activityArray removeAllObjects];
+            }
+            if (self.themeArray.count > 0) {
+                [self.themeArray removeAllObjects];
+            }
+            if (self.listArray.count > 0) {
+                [self.listArray removeAllObjects];
+            }
 
             //推荐活动
             for (NSDictionary *dict in acDataArray) {
