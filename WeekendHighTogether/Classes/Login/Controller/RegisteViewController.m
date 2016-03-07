@@ -42,6 +42,7 @@
         BmobUser *buser =[[BmobUser alloc]init];
         [buser setUsername:self.uesrName.text];
         [buser setPassword:self.uesrCode.text];
+        [buser setMobilePhoneNumber:self.uesrName.text];
         [buser signUpInBackgroundWithBlock:^(BOOL isSuccessful, NSError *error) {
             if (isSuccessful) {
                 //[ProgressHUD showSuccess:@"注册成功"];

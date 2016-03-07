@@ -85,31 +85,6 @@
     return YES;
 }
 #pragma mark---CLLocationManagerDelegate
-//- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations{
-//    //取出第一个位置
-//    CLLocation *location = [locations lastObject];
-//    //获取坐标
-//    CLLocationCoordinate2D coordinate = location.coordinate;
-//    WYLog(@"经度：%f  维度：%f 海拔：%f 航向：%f行走速度：%f", coordinate.longitude, coordinate.latitude, location.altitude,location.course,location.speed);
-//    NSUserDefaults *users = [NSUserDefaults standardUserDefaults];
-//    [users setValue:[NSNumber numberWithDouble:coordinate.latitude] forKey:@"lat"];
-//    [users setValue:[NSNumber numberWithDouble:coordinate.longitude] forKey:@"lng"];
-//    
-//    
-//    //在获取到用户位置（经纬度）后，通过逆地理编码将经纬度转化为实际的地名、街道等信息
-//    
-//    
-//    [_geocoder reverseGeocodeLocation:location completionHandler:^(NSArray<CLPlacemark *> * _Nullable placemarks, NSError * _Nullable error) {
-//        CLPlacemark *placeMark = [placemarks firstObject];
-//        WYLog(@"%@", placeMark.addressDictionary);
-//        [[NSUserDefaults standardUserDefaults]setValue:placeMark.addressDictionary[@"City"] forKey:@"city"];
-//        //保存
-//        [users synchronize];
-//        
-//    }];
-//    //如果不需要实时定位，使用完即使关闭定位服务
-//    [_locationManager stopUpdatingLocation];
-//}
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations{
     CLLocation *location = [locations lastObject];

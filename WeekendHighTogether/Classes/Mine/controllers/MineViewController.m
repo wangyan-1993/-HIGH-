@@ -133,7 +133,8 @@
 //    }
     [self.headImageBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     self.headImageBtn.backgroundColor=[UIColor whiteColor];
-    [self.headImageBtn addTarget:self action:@selector(login) forControlEvents:UIControlEventTouchUpInside];
+    [self.headImageBtn addTarget:self action:@selector(login:) forControlEvents:UIControlEventTouchUpInside];
+    self.headImageBtn.tag = 1;
     [headView addSubview:self.headImageBtn];
     [headView addSubview:self.nikeNameLabel];
 }
@@ -141,17 +142,20 @@
     AppDelegate *delegate=(AppDelegate*)[[UIApplication sharedApplication]delegate];
     if (delegate.isLogin) {
         [self.headImageBtn setTitle:delegate.username forState:UIControlStateNormal];
+        self.headImageBtn.tag = 0;
     }else{
         [self.headImageBtn setTitle:@"登录/注册" forState:UIControlStateNormal];
     }
     
 
 }
-- (void)login{
-
+- (void)login:(UIButton *)btn{
+    if (btn.tag == 1) {
+        
     UIStoryboard *loginSB = [UIStoryboard storyboardWithName:@"LoginStoryboard" bundle:nil];
     UINavigationController *nav = [loginSB instantiateViewControllerWithIdentifier:@"LoginNav"];
     [self.navigationController presentViewController:nav animated:YES completion:nil];
+    }
 }
 
 - (void)checkAppVersion{

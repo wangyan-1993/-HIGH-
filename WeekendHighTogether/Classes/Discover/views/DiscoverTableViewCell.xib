@@ -20,13 +20,12 @@
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="87" id="JgW-h0-en8"/>
-                            <constraint firstAttribute="height" constant="87" id="UE4-Y6-bZ0"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="123265" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lbG-uv-8he">
                         <rect key="frame" x="121" y="14" width="235" height="76"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
@@ -34,6 +33,7 @@
                     <constraint firstAttribute="bottomMargin" secondItem="lbG-uv-8he" secondAttribute="bottom" constant="5" id="4cP-66-tOJ"/>
                     <constraint firstItem="TaZ-f8-2W9" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="AVp-vM-Tz2"/>
                     <constraint firstItem="TaZ-f8-2W9" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="EeR-5u-A6T"/>
+                    <constraint firstItem="TaZ-f8-2W9" firstAttribute="centerY" secondItem="lbG-uv-8he" secondAttribute="centerY" id="dRi-4o-jxa"/>
                     <constraint firstAttribute="trailingMargin" secondItem="lbG-uv-8he" secondAttribute="trailing" constant="11" id="n3B-XJ-cM6"/>
                     <constraint firstItem="lbG-uv-8he" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="6" id="wwA-2w-HQg"/>
                     <constraint firstItem="lbG-uv-8he" firstAttribute="leading" secondItem="TaZ-f8-2W9" secondAttribute="trailing" constant="26" id="zpH-cq-Hid"/>
