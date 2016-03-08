@@ -27,13 +27,20 @@
     self.security.clearButtonMode =  UITextFieldViewModeUnlessEditing;
     self.userCode.clearButtonMode =  UITextFieldViewModeUnlessEditing;
     self.userSecondCode.clearButtonMode =  UITextFieldViewModeUnlessEditing;
-
+    [self showBackBtnWithImage:@"back"];
+}
+- (void)viewWillAppear:(BOOL)animated{
+    self.userSecondCode.text = nil;
+    self.userPhoneNum.text = nil;
+    self.userCode.text = nil;
+    self.security.text = nil;
 }
 - (IBAction)sendSecurityAction:(id)sender {
     [BmobSMS requestSMSCodeInBackgroundWithPhoneNumber:self.userPhoneNum.text andTemplate:@"验证码" resultBlock:^(int number, NSError *error) {
         if (error == nil) {
             UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"温馨提示" message:@"短信已发送,请注意查看(十分钟内有效)" delegate:self cancelButtonTitle:@"确定" otherButtonTitles: nil];
             [alertView show];
+            
         }
 
     }];
@@ -44,8 +51,26 @@
         
                [BmobUser resetPasswordInbackgroundWithSMSCode:self.security.text andNewPassword:self.userCode.text block:^(BOOL isSuccessful, NSError *error) {
                    if (isSuccessful) {
-                       UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"温馨提示" message:@"密码已修改成功,请重新登录" delegate:self cancelButtonTitle:@"确定" otherButtonTitles: nil];
-                       [alertView show];
+//                       UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"温馨提示" message:@"密码已修改成功,请重新登录" delegate:self cancelButtonTitle:@"确定" otherButtonTitles: nil];
+//                       [alertView show];
+                       
+                       UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"恭喜" message:@"密码修改成功,请重新登录" preferredStyle:UIAlertControllerStyleActionSheet];
+                       UIAlertAction *alertAction1 = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                           [self.navigationController popViewControllerAnimated:YES];
+                          
+                           
+                       }];
+                       UIAlertAction *alertAction2 = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                           
+                       }];
+                       
+                       [alert addAction:alertAction1];
+                       [alert addAction:alertAction2];
+                       [self presentViewController:alert animated:YES completion:nil];
+
+                       
+                       
+                       
                    }else{
                        UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"温馨提示" message:                        [NSString stringWithFormat:@"%@", error] delegate:self cancelButtonTitle:@"确定" otherButtonTitles: nil];
                        [alertView show];

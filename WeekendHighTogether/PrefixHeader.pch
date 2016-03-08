@@ -13,8 +13,7 @@
 #import "HWTools.h"
 #import "UIView+Extension.h"
 #import <UIKit/UIKit.h>
-#import <AFNetworking/AFHTTPSessionManager.h>
-#import <SDWebImage/UIImageView+WebCache.h>
+
 #import "AppDelegate.h"
 #import "DataBaseManager.h"
 #import "City.h"

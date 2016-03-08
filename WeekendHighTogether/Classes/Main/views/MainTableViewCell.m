@@ -8,6 +8,8 @@
 
 #import "MainTableViewCell.h"
 #import <SDWebImage/UIImageView+WebCache.h>
+#import <CoreLocation/CoreLocation.h>
+
 @interface MainTableViewCell()
 //活动图片
 @property (weak, nonatomic) IBOutlet UIImageView *activityImageView;
@@ -31,11 +33,21 @@
     self.activityNameLable.text = model.title;
     self.activityPrice.text = model.price;
     
+       NSNumber *lat = [[NSUserDefaults standardUserDefaults] valueForKey:@"lat"];
+    NSNumber *lng = [[NSUserDefaults standardUserDefaults] valueForKey:@"lng"];
+    
+    CLLocation *orig=[[CLLocation alloc] initWithLatitude:[lat floatValue]  longitude:[lng floatValue]];
+    CLLocation* dist=[[CLLocation alloc] initWithLatitude:model.lat longitude:model.lng];
+    
+    CLLocationDistance kilometers=[dist distanceFromLocation:orig]/1000;
+    [self.activityDistance setTitle:[NSString stringWithFormat:@"%.fKm", kilometers] forState:UIControlStateNormal ];
+  
     if ([model.type integerValue] != RecommedTypeActivity) {
         self.activityDistance.hidden = YES;
     } else{
         self.activityDistance.hidden = NO;
     }
+
     
 }
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

@@ -20,6 +20,8 @@
         self.activityId = dict[@"id"];
         self.address = dict[@"address"];
         self.type = dict[@"type"];
+        self.lat= [dict[@"lat"] floatValue];
+        self.lng = [dict[@"lng"] floatValue];
     }
     return self;
 }

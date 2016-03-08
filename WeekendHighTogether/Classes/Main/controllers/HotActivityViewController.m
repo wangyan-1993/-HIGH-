@@ -10,6 +10,8 @@
 #import "PullingRefreshTableView.h"
 #import "ThemeViewController.h"
 #import "HotActivityTableViewCell.h"
+#import <AFNetworking/AFHTTPSessionManager.h>
+#import <SDWebImage/UIImageView+WebCache.h>
 @interface HotActivityViewController ()<UITableViewDataSource, UITableViewDelegate, PullingRefreshTableViewDelegate>
 {
     NSInteger _pageCount;

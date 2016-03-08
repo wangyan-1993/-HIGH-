@@ -35,6 +35,11 @@
     //默认switch关闭
     self.uncodeSwitch.on = NO;
 }
+- (void)viewWillAppear:(BOOL)animated{
+    self.uesrName.text = nil;
+    self.uesrCode.text = nil;
+    self.userSecondCode.text = nil;
+}
 - (IBAction)registerBtnAction:(id)sender {
     if ([self checkOut]) {
        
@@ -97,13 +102,12 @@
     }
     NSString *number1 = @"^1[3|4|5|7|8][0-9]\\d{8}$";
     NSPredicate *numberPre1 = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",number1];
-    NSString *number2 = @"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}";
-    NSPredicate *numberPre2 = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",number2];
+    
    
     
     
-    if ( ![numberPre2 evaluateWithObject:self.uesrName.text] && ![numberPre1 evaluateWithObject:self.uesrName.text]) {
-        UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"温馨提示" message:@"输入的手机号或邮箱号不正确" delegate:self cancelButtonTitle:@"确定" otherButtonTitles: nil];
+    if ( ![numberPre1 evaluateWithObject:self.uesrName.text]) {
+        UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"温馨提示" message:@"输入的手机号不正确" delegate:self cancelButtonTitle:@"确定" otherButtonTitles: nil];
         [alertView show];
         return NO;
 

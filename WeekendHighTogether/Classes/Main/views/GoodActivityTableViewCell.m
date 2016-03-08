@@ -7,7 +7,11 @@
 //
 
 #import "GoodActivityTableViewCell.h"
+#import <CoreLocation/CoreLocation.h>
+
+#import <SDWebImage/UIImageView+WebCache.h>
 @interface GoodActivityTableViewCell()
+
 @property (weak, nonatomic) IBOutlet UIImageView *headerImageView;
 @property (weak, nonatomic) IBOutlet UILabel *activityTitleLable;
 @property (weak, nonatomic) IBOutlet UILabel *activityDistanceLable;
@@ -34,6 +38,14 @@
     self.activityPriceLable.text = [NSString stringWithFormat:@"%@", goodModel.price];
     [self.loveCountButton setTitle:[NSString stringWithFormat:@"%@",goodModel.counts] forState:UIControlStateNormal];
     self.ageLable.text =  goodModel.age;
+    NSNumber *lat = [[NSUserDefaults standardUserDefaults] valueForKey:@"lat"];
+    NSNumber *lng = [[NSUserDefaults standardUserDefaults] valueForKey:@"lng"];
+   
+    CLLocation *orig=[[CLLocation alloc] initWithLatitude:[lat floatValue]  longitude:[lng floatValue]];
+    CLLocation* dist=[[CLLocation alloc] initWithLatitude:goodModel.lat longitude:goodModel.lng];
+    
+    CLLocationDistance kilometers=[dist distanceFromLocation:orig]/1000;
+    self.activityDistanceLable.text = [NSString stringWithFormat:@"%.fKm", kilometers];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

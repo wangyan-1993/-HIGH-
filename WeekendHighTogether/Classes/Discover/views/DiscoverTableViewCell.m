@@ -8,6 +8,7 @@
 
 #import "DiscoverTableViewCell.h"
 
+#import <SDWebImage/UIImageView+WebCache.h>
 @implementation DiscoverTableViewCell
 
 - (void)awakeFromNib {

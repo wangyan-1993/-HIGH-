@@ -9,6 +9,7 @@
 #import "SelectCityViewController.h"
 #import "City.h"
 #import "DataBaseManager.h"
+#import <AFNetworking/AFHTTPSessionManager.h>
 
 @interface SelectCityViewController ()<UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>
 @property(nonatomic, strong) UICollectionView *collectionView;

@@ -30,9 +30,9 @@
                         <color key="backgroundColor" red="1" green="0.64527849132190851" blue="0.64132878662849979" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="UWY-ZG-uv0" firstAttribute="top" secondItem="QqX-BB-Swk" secondAttribute="bottom" id="AdI-uE-pV4"/>
-                            <constraint firstItem="UWY-ZG-uv0" firstAttribute="leading" secondItem="6Rq-VO-Qr1" secondAttribute="leadingMargin" constant="-20" id="JiW-Ji-jda"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="UWY-ZG-uv0" secondAttribute="trailing" constant="-20" id="YYW-HD-BYd"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="UWY-ZG-uv0" secondAttribute="trailing" constant="-20" id="G3i-kh-tNV"/>
                             <constraint firstItem="g7H-UF-1JT" firstAttribute="top" secondItem="UWY-ZG-uv0" secondAttribute="bottom" constant="-30" id="cpd-H5-kif"/>
+                            <constraint firstItem="UWY-ZG-uv0" firstAttribute="leading" secondItem="6Rq-VO-Qr1" secondAttribute="leading" id="eDX-49-dzq"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="欢乐周末" id="nwO-9u-cr8"/>

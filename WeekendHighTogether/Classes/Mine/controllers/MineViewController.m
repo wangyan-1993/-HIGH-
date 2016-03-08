@@ -10,6 +10,7 @@
 #import <SDWebImage/SDImageCache.h>
 #import <MessageUI/MessageUI.h>
 #import "ProgressHUD.h"
+#import <BmobSDK/BmobUser.h>
 
 #import "AppDelegate.h"
 #import "ShareView.h"
@@ -124,14 +125,8 @@
     self.headImageBtn.frame=CGRectMake(20, 40, kWidth/3, kWidth/3);
     self.headImageBtn.layer.cornerRadius=kWidth/6;
     self.headImageBtn.clipsToBounds=YES;
-   // AppDelegate *delegate=(AppDelegate*)[[UIApplication sharedApplication]delegate];
-    
-//    if (delegate.isLogin) {
-//        [self.headImageBtn setTitle:@"已登录" forState:UIControlStateNormal];
-//    }else{
-//    [self.headImageBtn setTitle:@"登录/注册" forState:UIControlStateNormal];
-//    }
-    [self.headImageBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    self.headImageBtn.titleLabel.numberOfLines = 0;
+      [self.headImageBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     self.headImageBtn.backgroundColor=[UIColor whiteColor];
     [self.headImageBtn addTarget:self action:@selector(login:) forControlEvents:UIControlEventTouchUpInside];
     self.headImageBtn.tag = 1;
@@ -156,6 +151,12 @@
     UINavigationController *nav = [loginSB instantiateViewControllerWithIdentifier:@"LoginNav"];
     [self.navigationController presentViewController:nav animated:YES completion:nil];
     }
+}
+- (IBAction)logout:(id)sender {
+    [BmobUser logout];
+    [self.headImageBtn setTitle:@"登录/注册" forState:UIControlStateNormal];
+    self.headImageBtn.tag = 1;
+
 }
 
 - (void)checkAppVersion{
@@ -229,7 +230,8 @@
 
 - (UILabel *)nikeNameLabel{
     if (_nikeNameLabel == nil) {
-        self.nikeNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(190, 80, kWidth - 200, 40)];
+        
+        self.nikeNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.5*kWidth, 80, kWidth - 200, 40)];
         self.nikeNameLabel.text = @"欢迎来到Hi周末";
         self.nikeNameLabel.textColor = [UIColor whiteColor];
         self.nikeNameLabel.numberOfLines = 0;

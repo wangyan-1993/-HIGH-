@@ -10,6 +10,8 @@
 #import "PullingRefreshTableView.h"
 #import "GoodActivityTableViewCell.h"
 #import "ActivityViewController.h"
+#import <AFNetworking/AFHTTPSessionManager.h>
+#import <SDWebImage/UIImageView+WebCache.h>
 @interface GoodActivityViewController ()<UITableViewDataSource, UITableViewDelegate, PullingRefreshTableViewDelegate>
 {
     NSInteger _pageCount;

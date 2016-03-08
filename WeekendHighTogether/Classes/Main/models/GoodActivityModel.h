@@ -17,6 +17,8 @@
 @property(nonatomic, copy) NSString *activityId;
 @property(nonatomic, copy) NSString *address;
 @property(nonatomic, copy) NSString *type;
+@property(nonatomic, assign) CGFloat lat;
+@property(nonatomic, assign) CGFloat lng;
 
 - (instancetype)initWithDictionary:(NSDictionary *)dict;
 @end

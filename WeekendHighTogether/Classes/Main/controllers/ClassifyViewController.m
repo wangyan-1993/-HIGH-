@@ -14,6 +14,8 @@
 #import "GoodActivityModel.h"
 #import <Foundation/Foundation.h>
 #import "ProgressHUD.h"
+#import <AFNetworking/AFHTTPSessionManager.h>
+#import <SDWebImage/UIImageView+WebCache.h>
 @interface ClassifyViewController ()<UITableViewDataSource, UITableViewDelegate, PullingRefreshTableViewDelegate>
 {
     NSInteger _pageCount;

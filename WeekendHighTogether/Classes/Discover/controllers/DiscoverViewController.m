@@ -12,6 +12,7 @@
 #import "DiscoverModel.h"
 #import "ProgressHUD.h"
 #import "ActivityViewController.h"
+#import <AFNetworking/AFHTTPSessionManager.h>
 
 @interface DiscoverViewController ()<UITableViewDataSource, UITableViewDelegate, PullingRefreshTableViewDelegate>
 @property(nonatomic, strong) PullingRefreshTableView *tableView;
