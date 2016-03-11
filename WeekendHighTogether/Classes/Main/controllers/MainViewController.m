@@ -71,12 +71,12 @@
     self.navigationItem.leftBarButtonItem = self.leftBarBtn;
     
     //right
-    UIButton *rightBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    rightBtn.frame = CGRectMake(0, 0, 20, 20);
-    [rightBtn setImage:[UIImage imageNamed:@"btn_search"] forState:UIControlStateNormal];
-    [rightBtn addTarget:self action:@selector(searchActivityAction:) forControlEvents:UIControlEventTouchUpInside];
-    UIBarButtonItem *rightBarBtn = [[UIBarButtonItem alloc]initWithCustomView:rightBtn];
-    self.navigationItem.rightBarButtonItem = rightBarBtn;
+//    UIButton *rightBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+//    rightBtn.frame = CGRectMake(0, 0, 20, 20);
+//    [rightBtn setImage:[UIImage imageNamed:@"btn_search"] forState:UIControlStateNormal];
+//    [rightBtn addTarget:self action:@selector(searchActivityAction:) forControlEvents:UIControlEventTouchUpInside];
+//    UIBarButtonItem *rightBarBtn = [[UIBarButtonItem alloc]initWithCustomView:rightBtn];
+//    self.navigationItem.rightBarButtonItem = rightBarBtn;
     
     
     
@@ -208,10 +208,10 @@
     UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:selectCityVC];
     [self.navigationController presentViewController:nav animated:YES completion:nil];
 }
-- (void)searchActivityAction:(UIBarButtonItem *)barBtn{
-    SearchViewController *searchVC = [[SearchViewController alloc]init];
-    [self.navigationController pushViewController:searchVC animated:YES];
-}
+//- (void)searchActivityAction:(UIBarButtonItem *)barBtn{
+//    SearchViewController *searchVC = [[SearchViewController alloc]init];
+//    [self.navigationController pushViewController:searchVC animated:YES];
+//}
 //分类列表
 - (void)activityButtonAction:(UIButton *)btn{
     ClassifyViewController *classifyVC = [[ClassifyViewController alloc]init];

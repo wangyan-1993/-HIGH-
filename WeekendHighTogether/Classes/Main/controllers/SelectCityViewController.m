@@ -152,6 +152,9 @@
     btnCity.frame = CGRectMake(kWidth/4*3+10, 52, kWidth/4-20, 30);
     btnCity.backgroundColor = mainColor;
     [btnCity setTitle:@"重新定位" forState:UIControlStateNormal];
+    if (kWidth < 375) {
+        btnCity.titleLabel.font = [UIFont systemFontOfSize:14];
+    }
     [btnCity addTarget:self action:@selector(dingwei) forControlEvents:UIControlEventTouchUpInside];
     [reusableView addSubview:btnCity];
 

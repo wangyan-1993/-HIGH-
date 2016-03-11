@@ -141,6 +141,7 @@
     WBImageObject *image = [WBImageObject object];
     image.imageData = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"002" ofType:@"jpg"]];
     message.imageObject = image;
+    message.text = @"欢迎来到 周末HIGH起来";
     return message;
 }
 //朋友

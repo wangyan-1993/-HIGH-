@@ -692,7 +692,7 @@
 				TargetAttributes = {
 					7A8B03AD1C3A1C3A00FFCBA0 = {
 						CreatedOnToolsVersion = 7.2;
-						DevelopmentTeam = U3LEG79K3Q;
+						DevelopmentTeam = CCQ5LLLX4L;
 					};
 				};
 			};
@@ -874,7 +874,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Beijing Lamco Sinyo education technology co., LTD (CCQ5LLLX4L)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Beijing Lamco Sinyo education technology co., LTD (CCQ5LLLX4L)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -917,7 +918,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Beijing Lamco Sinyo education technology co., LTD (CCQ5LLLX4L)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Beijing Lamco Sinyo education technology co., LTD (CCQ5LLLX4L)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -942,8 +944,9 @@
 			baseConfigurationReference = 3EB1357DE69483C95E139891 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Beijing Lamco Sinyo education technology co., LTD (CCQ5LLLX4L)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -958,7 +961,7 @@
 					"$(PROJECT_DIR)/WeekendHighTogether/Library/libWeiboSDK",
 					"$(PROJECT_DIR)/WeekendHighTogether/Library/weixinSDK",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = wang.WeekendHighTogether;
+				PRODUCT_BUNDLE_IDENTIFIER = wang.WeekendHighTogeth;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -970,8 +973,9 @@
 			baseConfigurationReference = 3CDB23514B5C5DF1880D803B /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Beijing Lamco Sinyo education technology co., LTD (CCQ5LLLX4L)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -986,7 +990,7 @@
 					"$(PROJECT_DIR)/WeekendHighTogether/Library/libWeiboSDK",
 					"$(PROJECT_DIR)/WeekendHighTogether/Library/weixinSDK",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = wang.WeekendHighTogether;
+				PRODUCT_BUNDLE_IDENTIFIER = wang.WeekendHighTogeth;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
